@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 
 const App = () =>{
   return(
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="Signup">
       <Stack.Screen 
         name="Splash"
         component={Splash}

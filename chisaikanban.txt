@@ -1,0 +1,46 @@
+1.	Select Size #####MOLECULE
+2.	Buttons/Add to Favorites/Small **DONE**
+3.	Buttons/Outline/Small **DONE**
+4.	Buttons/Review **DONE**
+5.	Buttons/Review **DONE**
+6.	Buttons/Search/Big (HARUSNYA Butons/Camera/Big) **DONE**
+7.	Buttons/Search/Big  **DONE**
+8.	Buttons/Social Media
+9.	Buttons/Primary/Small **DONE**
+10.	Buttons/Outline **DONE**
+11.	Buttons/Add **DONE**
+12.	Buttons/Add to Bag/Small **DONE**
+13.	Dropdowns  **using @react-native-community/picker**
+14.	Switches **DONE**
+15.	Order Card #####MOLECULE
+16.	Product card/List/Order Information #####MOLECULE
+17.	Product card/List/Favorites #####MOLECULE
+18.	Product card/Module/Favorite #####MOLECULE
+19.	Product cards/Module/Catalogue #####MOLECULE
+20.	Product cards/Main #####MOLECULE
+21.	Product card/List/Catalogue #####MOLECULE
+22.	Product card/Bag #####MOLECULE
+23.	Promo Code Cards #####MOLECULE
+24.	Pop-up Windows **DONE**
+25.	Address Cards **DONE**
+26.	Text Fields/Small **DONE**
+27.	Filters #####MOLECULE
+28.	Range ++++++ONGOING++++++
+29.	Category Card
+30.	Navigation Bars
+31.	Photo/review/small #####MOLECULE
+32.	Checkboxes **DONE**
+33.	Rating
+34.	Labels
+35.	Text Fields/Ordinary
+36.	Search Bar
+37.	Tags
+38.	Tab Bar #####MOLECULE
+39.	Tab Bar/icons/activated (HILANGIN FAVORITES)
+40.	Tab bar/icons/inactive (HILANGIN FAVORITES)
+41.	UI Bars/Dark bg
+42.	UI bars/ Light bg
+
+
+ONGOING:
+28. Range (Draggable; get the position of dragged indicator; transfrom width when dragged)
