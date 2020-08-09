@@ -9,18 +9,28 @@ import {
 } from 'react-native';
 import GridIcon from '../../../assets/images/grid-view.svg';
 
-export default GridView = () =>{
+/*
+submit? submit(function())
+*/
+
+export default GridView = ({submit}) =>{
 
   const [active, setActive] = useState(false)
 
-  const handleGridClick = () =>{
-    setActive(!active)
+  const handlePressGrid = () =>{
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
   
 
   return(
     <>
-      <TouchableOpacity activeOpacity={.9}>
+      <TouchableOpacity activeOpacity={.9} onPress={handlePressGrid}>
         <View style={styles.iconContainer}>
           <GridIcon 
             width={20}

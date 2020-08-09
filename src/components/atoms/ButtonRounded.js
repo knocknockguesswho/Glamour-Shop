@@ -22,23 +22,28 @@ name?
 
 /*
 big? <bool>
-big:
-small
+submit? submit(function())
 */
 
-export default ButtonRounded = ({name, big}) =>{
+export default ButtonRounded = ({name, big, submit}) =>{
 
   const [active, setActive] = useState(false)
 
   const handleToggleButton = () =>{
-    setActive(!active)
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
   
 
   return(
     <>
       {name==='AddToBag'?
-        <TouchableHighlight onPress={handleToggleButton} style={!active? styles.buttonAddToBag:styles.buttonAddToBagActive}>
+        <TouchableOpacity activeOpacity={1} onPress={handleToggleButton} style={!active? styles.buttonAddToBag:styles.buttonAddToBagActive}>
           {!active?
             <ShoppingBag
               width={12}
@@ -49,9 +54,9 @@ export default ButtonRounded = ({name, big}) =>{
               height={12}
             />
           }
-        </TouchableHighlight>:
+        </TouchableOpacity>:
       name==='AddPlus'?
-        <TouchableHighlight onPress={handleToggleButton} style={!active? styles.buttonAddPlus:styles.buttonAddPlusActive}>
+        <TouchableOpacity activeOpacity={1} onPress={handleToggleButton} style={!active? styles.buttonAddPlus:styles.buttonAddPlusActive}>
           {!active?
             <Icon
               name='plus'
@@ -64,15 +69,15 @@ export default ButtonRounded = ({name, big}) =>{
               color='black'
             />
           }
-        </TouchableHighlight> :
+        </TouchableOpacity> :
         name==='GoWithArrow'?
-        <TouchableHighlight onPress={()=> console.log('arrow-right')} activeOpacity={.8} style={!active? styles.buttonAddPlus:styles.buttonAddPlusActive}>
+        <TouchableOpacity activeOpacity={1} onPress={handleToggleButton} activeOpacity={.8} style={!active? styles.buttonAddPlus:styles.buttonAddPlusActive}>
           <Icon
             name='arrow-right'
             size={12}
             color='white'
           />
-        </TouchableHighlight> :
+        </TouchableOpacity> :
         <Text></Text>
       }
     </>

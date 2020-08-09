@@ -10,19 +10,27 @@ import {
 import * as Animatable from 'react-native-animatable';
 
 //persist whitelist
-
-export default SwitchToggle = () =>{
+/*
+submit? submit(function())
+*/
+export default SwitchToggle = ({submit}) =>{
 
   const [active, setActive] = useState(false)
 
   const handleToggle = () =>{
-    setActive(!active)
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
 
   return(
     <>
       <View style={styles.toggleContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={()=>handleToggle()}>
+        <TouchableOpacity activeOpacity={1} onPress={handleToggle}>
           <Animatable.View style={styles.toggleCircle(active)} />
         </TouchableOpacity>
       </View>

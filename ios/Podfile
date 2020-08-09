@@ -10,6 +10,8 @@ target 'GlamourShop' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'rn-range-slider', :path => '../node_modules/rn-range-slider'
+
   target 'GlamourShopTests' do
     inherit! :complete
     # Pods for testing

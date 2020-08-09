@@ -9,18 +9,29 @@ import {
 } from 'react-native';
 import FilterIcon from '../../../assets/images/filter-icon.svg';
 
-export default Filter = () =>{
+/*
+submit? submit(function())
+*/
+
+
+export default Filter = ({submit}) =>{
 
   const [active, setActive] = useState(false)
 
-  const handleFilterClick = () =>{
-    setActive(!active)
+  const handlePressFilter = () =>{
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
   
 
   return(
     <>
-      <TouchableOpacity activeOpacity={.9} style={{flexDirection: 'row'}}>
+      <TouchableOpacity activeOpacity={.9} onPress={handlePressFilter} style={{flexDirection: 'row'}}>
         <View style={styles.iconContainer}>
           <FilterIcon 
             width={20}

@@ -10,13 +10,24 @@ import {
 } from 'react-native';
 
 //persist whitelist
+/*
+title? 'CHECK_TITLE'
+titlePosition? top, right, bottom, left
+submit? submit(function())
+*/
 
-export default CheckBox = ({title, titlePosition}) =>{
+export default CheckBox = ({title, titlePosition, submit}) =>{
 
   const [checked, setChecked] = useState(false)
 
   const handleCheckBox = () =>{
+    if(submit!==undefined){
+      submit()
       setChecked(!checked)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setChecked(!checked)
+    }
   }
 
 

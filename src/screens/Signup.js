@@ -16,7 +16,6 @@ export class Signup extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <FormSignup />
       </View>
     )
   }
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
     width: width,
     alignSelf: 'center',
     backgroundColor: '#F9F9F9'
-  }
+  },
 })
 
 export default Signup

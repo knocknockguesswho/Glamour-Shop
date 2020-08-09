@@ -1,4 +1,6 @@
 import FormSignup from './FormSignup';
+import SortBy from './SortBy';
 export{
-  FormSignup
+  FormSignup,
+  SortBy
 }
