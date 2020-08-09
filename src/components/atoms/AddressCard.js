@@ -10,17 +10,23 @@ import {
 import CheckBox from './CheckBox'
 
 //persist whitelist
+/*
+submit? submit(function())
+*/
 
-export default AddressCard = ({name, address}) =>{
+
+export default AddressCard = ({name, address, submit}) =>{
 
   const [active, setActive] = useState(false)
 
-  const handlePopup = () =>{
-    setActive(!active)
-  }
-
   const handleEdit = () =>{
-    console.log('test')
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
 
 
@@ -37,7 +43,7 @@ export default AddressCard = ({name, address}) =>{
             <Text style={{color: '#DB3022', fontSize: 12}}>Edit</Text>
           </TouchableOpacity>
         </View>
-        <CheckBox title='Use as the shipping address' titlePosition='right' />
+        <CheckBox title='Use as the shipping address' titlePosition='right' submit={()=>console.log('chekced')} />
       </View>
     </>
   )

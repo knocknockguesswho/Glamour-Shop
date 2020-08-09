@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import 'react-native-gesture-handler';
 import {
+  Catalogue,
   Splash,
   Signup
 } from '../screens'
@@ -17,7 +18,7 @@ const Stack = createStackNavigator();
 
 const App = () =>{
   return(
-    <Stack.Navigator initialRouteName="Signup">
+    <Stack.Navigator initialRouteName="Catalogue">
       <Stack.Screen 
         name="Splash"
         component={Splash}
@@ -26,6 +27,11 @@ const App = () =>{
       <Stack.Screen 
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen 
+        name="Catalogue"
+        component={Catalogue}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -13,7 +13,7 @@ import ButtonRounded from './ButtonRounded';
 
 //BUG WHEN INPUT ERROR, IT RETURNS VALUE OF ''; EXPECTED VALUE OF CURRENT VALUE
 
-export default TextFieldSmall = ({placeholder, value, type, secure}) =>{
+export default TextFieldSmall = ({placeholder, value, type, secure, submit}) =>{
 
   const [input, setInput] = useState({
     value: value,
@@ -21,10 +21,18 @@ export default TextFieldSmall = ({placeholder, value, type, secure}) =>{
     isTyping: false
   })
 
+  const handleSubmitEditing = () =>{
+    if(submit!==undefined){
+      submit()
+    } else{
+      console.log(`variable 'submit' expecting function`)
+    }
+  }
+
   return(
     <>
       <View style={styles.formContainer(input.isError)}>
-        <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={()=>setInput({...input, isTyping: false})} onChangeText={(value)=>setInput(value)} secureTextEntry={true} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={(value)=>setInput({...input, isError: true, value: input.value})} />
+        <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: false, value: value})} onChangeText={(value)=>setInput(value)} secureTextEntry={true} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
         {input.value===''?
           <View style={{justifyContent: 'center'}}>
             <ButtonRounded name='GoWithArrow' big={false}/>

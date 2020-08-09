@@ -13,26 +13,37 @@ title? 'BUTTON_TITLE'
 type? 'primary', 'outline'
 big? boolean
 withIconLeft? boolean
+submit? submit(function())
 */
 
-export default Button = ({title, type, big, withIconLeft}) =>{
+export default Button = ({title, type, big, withIconLeft, submit}) =>{
+
+  const handlePressButton = () =>{
+    if(submit!==undefined){
+      submit()
+    } else{
+      console.log(`variable 'submit' expecting function`)
+    }
+  }
 
   return(
     <>
       {type==='primary'?
-        <TouchableOpacity activeOpacity={.8} style={styles.buttonPrimary(big, withIconLeft)}>
+        <TouchableOpacity activeOpacity={.8} onPress={handlePressButton} style={styles.buttonPrimary(big, withIconLeft)}>
           {withIconLeft?
-            <Icon 
-              name='pen'
-              size={10}
-              color='white'
-            />:
+            <View style={{marginLeft: -width*.05, marginRight: -width*.05}}>
+              <Icon 
+                name='pen'
+                size={12}
+                color='white'
+              />
+            </View>:
             <></>
           }
           <Text style={styles.buttonPrimaryText(big, withIconLeft)}>{title}</Text>
         </TouchableOpacity>:
         type==='outline'?
-        <TouchableOpacity activeOpacity={.5} style={styles.buttonOutline(big)}>
+        <TouchableOpacity activeOpacity={.5} onPress={handlePressButton} style={styles.buttonOutline(big)}>
           <Text style={styles.buttonOutlineText(big)}>{title}</Text>
         </TouchableOpacity>:
         
@@ -46,8 +57,8 @@ const {height, width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   buttonPrimary: (big, withIconLeft) =>({
-    height: big? width*.11 : width*.07,
-    width: big? width*.9 : width*.2,
+    height: big? width*.11 : width*.08,
+    width: big? width*.9 : width*.4,
     backgroundColor: '#DB3022',
     alignSelf: big? 'center' : 'auto',
     justifyContent: 'space-evenly',
@@ -69,13 +80,13 @@ const styles = StyleSheet.create({
   buttonPrimaryText: (big, withIconLeft) =>({
     color: 'white',
     fontWeight: '700',
-    fontSize: big? 15 : 8,
-    marginRight: withIconLeft? width*.01:0
+    fontSize: big? 15 : 10,
+    marginRight: withIconLeft? width*.01:0,
   }),
   buttonOutlineText: (big, withIconLeft) =>({
     color: 'black',
     fontWeight: '700',
-    fontSize: big? 15 : 8,
+    fontSize: big? 15 : 10,
     marginRight: withIconLeft? width*.01:0
   })
 })

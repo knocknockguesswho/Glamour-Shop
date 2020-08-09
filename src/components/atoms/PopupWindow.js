@@ -9,23 +9,34 @@ import {
 } from 'react-native';
 
 //persist whitelist
+/*
+topTitle? 'BUTTON_TITLE'
+bottomTitle? 'BUTTON_TITLE'
+submit? submit(function(console.log('Pressed')))
+*/
 
-export default PopupWindow = ({topTitle, bottomTitle}) =>{
+export default PopupWindow = ({topTitle, bottomTitle, submit}) =>{
 
   const [active, setActive] = useState(false)
 
-  const handlePopup = () =>{
-    setActive(!active)
+  const handlePressPopup = () =>{
+    if(submit!==undefined){
+      submit()
+      setActive(!active)
+    } else{
+      console.log(`variable 'submit' expecting function`)
+      setActive(!active)
+    }
   }
 
   return(
     <>
       <View style={styles.popupContainer}>
-        <TouchableOpacity activeOpacity={1} onPress={handlePopup} style={styles.topText}>
+        <TouchableOpacity activeOpacity={1} onPress={handlePressPopup} style={styles.topText}>
           <Text style={styles.text(active)}>{topTitle}</Text>
         </TouchableOpacity>
         <View style={styles.breakingLine}></View>
-        <TouchableOpacity activeOpacity={1} style={styles.bottomText}>
+        <TouchableOpacity activeOpacity={1} onPress={handlePressPopup} style={styles.bottomText}>
           <Text>{bottomTitle}</Text>
         </TouchableOpacity>
       </View>
