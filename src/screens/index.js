@@ -1,9 +1,11 @@
+import MyProfileSettings from './MyProfileSettings';
+import Catalogue from './Catalogue';
 import Splash from './Splash';
 import Signup from './Signup';
-import Catalogue from './Catalogue'
 
 export {
   Catalogue,
+  MyProfileSettings,
   Splash,
   Signup
 }

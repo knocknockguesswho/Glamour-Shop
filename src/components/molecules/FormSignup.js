@@ -9,36 +9,28 @@ import {
 } from 'react-native';
 
 import {
-  
+  Button,
+  ButtonWithArrow,
+  TextFieldMedium,
 } from '../atoms';
 
-export default FormSignup = () =>{
-
-  const [formSignup, setForm] = useState([
-    {
-      placeholder: 'Name',
-      value: '',
-      type: 'none',
-      secure: false
-    },
-    {
-      placeholder: 'Email',
-      value: '',
-      type: 'emailAddress',
-      secure: false
-    },
-    {
-      placeholder: 'Password',
-      value: '',
-      type: 'password',
-      secure: true
-    }
-  ])
+export default FormSignup = ({title, formGroup, submit}) =>{
 
   return(
     <>
       <View style={styles.mainContainer}>
-        <Text style={styles.formTitle}>Sign Up</Text>
+        <Text style={styles.formTitle}>{title}</Text>
+        <View style={{marginBottom: width*.01, alignItems: 'center'}}>
+          {formGroup.map((form, index)=>{
+            return(
+              <TextFieldMedium key={index} placeholder={form.placeholder} value={form.value} type={form.type} secure={form.secure} submit={()=>console.log('Test Form')} />
+            )
+          })}
+        </View>
+        <View style={styles.buttonWithArrow}>
+          <ButtonWithArrow title='Already have an account?' submit={()=>console.log('go to login')} />
+        </View>
+        <Button title='SIGN UP' big={true} type='primary' submit={submit} />
       </View>
     </>
   )
@@ -57,6 +49,12 @@ const styles = StyleSheet.create({
   formTitle:{
     fontWeight: 'bold',
     fontSize: 34,
-    color: 'black'
+    color: 'black',
+    marginBottom: width*.12
+  },
+  buttonWithArrow:{
+    width: width*.9,
+    alignItems: 'flex-end',
+    marginBottom: width*.05
   }
 })

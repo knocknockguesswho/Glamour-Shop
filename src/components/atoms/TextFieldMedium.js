@@ -10,7 +10,17 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
-//BUG WHEN INPUT ERROR, IT RETURNS VALUE OF ''; EXPECTED VALUE OF CURRENT VALUE
+//BUG 
+//1. WHEN INPUT is ERROR, IT RETURNS VALUE OF ''; EXPECTED VALUE OF CURRENT VALUE
+//2. WHEN DONESUBMITING WITH VALUE OF '',IT CANNOT GETTING BACK TO DEFAULT STATE
+
+/*
+placeholder? string
+value? string
+type? string
+secure? boolean
+submit? submit(function())
+*/
 
 export default TextFieldMedium = ({placeholder, value, type, secure, submit}) =>{
 
@@ -34,8 +44,8 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit}) =>
       <View style={styles.container(input.isError)}>
         <Text style={styles.formLabel(input.isError, input.isTyping, input.doneSubmitting, input.value)}>{input.isTyping&&input.doneSubmitting||input.value!==''? placeholder : ''}</Text>
         <View style={styles.formContainer(input.isError)}>
-          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: true, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
-            {input.doneSubmitting?
+          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: false, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
+            {input.value!==''?
               <View style={styles.validation}>
                 <Icon 
                   name={input.isError? 'x' : 'check'}
@@ -60,12 +70,12 @@ const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   formContainer: (isError) =>({
     width: width*.85,
-    height: width*.09,
+    height: width*.12,
     backgroundColor: 'white',
     paddingLeft: width*.03,
     marginRight: width*.009,
     marginBottom: width*.003,
-    flexDirection: 'row'
+    flexDirection: 'row',
   }),
   formBar: (isError) =>({
     width: width*.8,
@@ -74,11 +84,13 @@ const styles = StyleSheet.create({
   container: (isError) =>({
     width: width*.9,
     marginTop: width*.01,
-    marginBottom: width*.01,
+    marginBottom: width*.015,
     borderRadius: width*.01,
     backgroundColor: 'white',
     borderColor: isError? '#F01F0E' : 'white',
     borderWidth: isError? 1 : 0,
+    elevation: 2,
+    overflow: 'hidden'
   }),
   formLabel:(isError, isTyping, doneSubmitting, value)=>({
     zIndex: 1,
