@@ -9,13 +9,50 @@ import {
 } from 'react-native';
 
 import {
-  FormSignup
+  FormSignup,
+  HeaderBackButton
 } from '../components/molecules';
 
-export class Signup extends Component {
+class Signup extends Component {
+  constructor(){
+    super();
+    this.state = {
+      formGroup: [
+        {
+          placeholder: 'Name',
+          value: '',
+          type: 'none',
+          secure: false
+        },
+        {
+          placeholder: 'Email',
+          value: '',
+          type: 'emailAddress',
+          secure: false
+        },
+        {
+          placeholder: 'Password',
+          value: '',
+          type: 'password',
+          secure: true
+        },
+      ]
+    }
+  }
+
+  handleSignup = () =>{
+    console.log('Thanks for register')
+  }
+
+  handleBackButton = () =>{
+    console.log('Go Back')
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
+        <HeaderBackButton submit={this.handleBackButton} />
+        <FormSignup title='Sign Up' formGroup={this.state.formGroup} submit={this.handleSignup}/>
       </View>
     )
   }
@@ -31,4 +68,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Signup
+export default Signup;

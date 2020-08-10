@@ -18,6 +18,8 @@ submit? submit(function())
 
 export default Button = ({title, type, big, withIconLeft, submit}) =>{
 
+  withIconLeft=false
+
   const handlePressButton = () =>{
     if(submit!==undefined){
       submit()
@@ -64,7 +66,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
     flexDirection: withIconLeft? 'row': 'column',
-    borderRadius: 100
+    borderRadius: 100,
+    elevation: 3
   }),
   buttonOutline: (big, withIconLeft)=>({
     height: big? width*.11 : width*.09,
