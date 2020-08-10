@@ -14,16 +14,24 @@ import {
   TextFieldMedium
 } from '../atoms';
 
-export default PasswordChange = ({title}) =>{
-
-  if(title===''||title===undefined){
-    title='Default Slider'
-  }
+export default PasswordChange = ({title, active}) =>{
 
   const [position, setPosition] = useState({
     top: width,
-    bottom: 50
-  })
+    bottom: 0
+  });
+
+  useEffect(()=>{
+    if(active==true){
+      setPosition({
+        ...position,
+        bottom: width
+      })
+    } setPosition({
+      ...position,
+      bottom: 0
+    })
+  },[])
 
   const draggedValue = new Animated.Value(position.bottom);
   const ModalRef = useRef(null);
@@ -41,7 +49,15 @@ export default PasswordChange = ({title}) =>{
           <View style={styles.sheetContent}>
             <View style={styles.sheetHandle}></View>
             <Text style={styles.sliderTitle}>{title}</Text>
-            <View style={styles.sliderMain}></View>
+            <View style={styles.sliderMain}>
+              <TextFieldMedium placeholder='Old Password' value='' type='none' secure={true} submit={()=>console.log('test submit oldpass')} />
+              <TouchableOpacity activeOpacity={.8} style={styles.forgotPasswordButton}>
+                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+              </TouchableOpacity>
+              <TextFieldMedium placeholder='New Password' value='' type='none' secure={true} submit={()=>console.log('test submit newpass')} />
+              <TextFieldMedium placeholder='Repeat New Password' value='' type='none' secure={true} submit={()=>console.log('test submit newpass')} />
+            </View>
+            <Button title='Save Password' type='primary' big={true} submit={()=>console.log('test')} />
           </View>
         </SlidingUpPanel>
       </View>
@@ -83,5 +99,15 @@ const styles = StyleSheet.create({
   sliderMain:{
     alignItems: 'center',
     marginBottom: width*.05
+  },
+  forgotPasswordButton:{
+    width: width*.9, 
+    alignItems: 'flex-end', 
+    marginTop: width*.02, 
+    marginBottom: width*.02
+  },
+  forgotPasswordText:{
+    fontSize: 10,
+    color: '#22222280'
   }
 })

@@ -1,4 +1,4 @@
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import React from 'react';
 import {
   StyleSheet,
@@ -9,6 +9,7 @@ import {
 import 'react-native-gesture-handler';
 import {
   Catalogue,
+  MyProfileSettings,
   Splash,
   Signup
 } from '../screens'
@@ -18,7 +19,17 @@ const Stack = createStackNavigator();
 
 const App = () =>{
   return(
-    <Stack.Navigator initialRouteName="Catalogue">
+    <Stack.Navigator initialRouteName="Signup">
+      <Stack.Screen 
+        name="Catalogue"
+        component={Catalogue}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen 
+        name="MyProfileSettings"
+        component={MyProfileSettings}
+        options={{headerShown: false}}
+      />
       <Stack.Screen 
         name="Splash"
         component={Splash}
@@ -27,11 +38,6 @@ const App = () =>{
       <Stack.Screen 
         name="Signup"
         component={Signup}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen 
-        name="Catalogue"
-        component={Catalogue}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

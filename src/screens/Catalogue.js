@@ -20,7 +20,7 @@ export class Catalogue extends Component {
             <Text>Catalogue</Text>
           </View>
         </View>
-        <View style={styles.sortByContainer}>
+        <View style={styles.sliderContainer}>
           <SortBy />
         </View>
       </>
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   headerContainer:{
     width: width
   },
-  sortByContainer:{
+  sliderContainer:{
     position: 'absolute',
     right: 0,
     left: 0,
