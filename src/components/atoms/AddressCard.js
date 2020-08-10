@@ -37,13 +37,12 @@ export default AddressCard = ({name, address, submit}) =>{
         <View style={styles.cardContent}>
           <View style={styles.addressDetail}>
             <Text style={styles.userFullName}>{name}</Text>
-            <Text style={{lineHeight: width*.04, width: '80%', fontSize: 12}}>{address}</Text>
+            <Text style={{lineHeight: width*.05, width: '80%', fontSize: 13}}>{address}</Text>
           </View>
           <TouchableOpacity activeOpacity={1} onPress={handleEdit} style={styles.editButton}>
-            <Text style={{color: '#DB3022', fontSize: 12}}>Edit</Text>
+            <Text style={{color: '#DB3022', fontSize: 15}}>Change</Text>
           </TouchableOpacity>
         </View>
-        <CheckBox title='Use as the shipping address' titlePosition='right' submit={()=>console.log('chekced')} />
       </View>
     </>
   )
@@ -53,8 +52,8 @@ const {height, width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   cardContainer:{
-    width: width*.75,
-    height: width*.3,
+    width: width*.9,
+    height: width*.28,
     borderRadius: 8,
     backgroundColor: 'white',
     elevation: 2,
@@ -75,10 +74,10 @@ const styles = StyleSheet.create({
   },
   addressDetail:{
     height: '100%',
-    width: '90%',
+    width: '80%'
   },
   userFullName:{
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '700',
     marginBottom: width*.01,
     color: '#222'

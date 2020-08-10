@@ -59,12 +59,15 @@ export default HeaderBackButton = ({submit, middleComponent, midCompTitle, right
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   mainContainer:{
-    height: height/1.15,
-    width: width*.95,
+    height: width*.15,
+    width: width,
     paddingTop: width*.05,
     alignSelf: 'center',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor: 'white',
+    paddingLeft: width*.03,
+    paddingRight: width*.03
   },
   leftComp:{
     width: '15%',

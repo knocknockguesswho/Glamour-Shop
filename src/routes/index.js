@@ -2,45 +2,23 @@ import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import 'react-native-gesture-handler';
-<<<<<<< HEAD
 import {
   Catalogue,
-  MyProfileSettings,
-  ShippingAddres,
-  Signup,
-  Splash,
-} from '../screens'
-
-=======
-import {Catalogue, Splash, Signup, Home, Shop, Bag, Profile} from '../screens';
+  ChangeAddress,
+  Splash, 
+  Signup, 
+  ShippingAddres, 
+  Home, 
+  Shop, 
+  Bag, 
+  Profile
+} from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
->>>>>>> a9460ea069f1269b64720cf14d9945ef71b576c3
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-<<<<<<< HEAD
-const App = () =>{
-  return(
-    <Stack.Navigator initialRouteName="ShippingAddress">
-      <Stack.Screen 
-        name="Catalogue"
-        component={Catalogue}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen 
-        name="MyProfileSettings"
-        component={MyProfileSettings}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen 
-        name="ShippingAddress"
-        component={ShippingAddres}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen 
-=======
 const MainApp = () => {
   return (
     <Tab.Navigator tabBar={(props) => <BottomNavigator {...props} />}>
@@ -54,9 +32,13 @@ const MainApp = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="ChangeAddress">
       <Stack.Screen
->>>>>>> a9460ea069f1269b64720cf14d9945ef71b576c3
+        name="ChangeAddress"
+        component={ChangeAddress}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Splash"
         component={Splash}
         options={{headerShown: false}}
@@ -69,6 +51,11 @@ const App = () => {
       <Stack.Screen
         name="Catalogue"
         component={Catalogue}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ShippingAddress"
+        component={ShippingAddres}
         options={{headerShown: false}}
       />
       <Stack.Screen

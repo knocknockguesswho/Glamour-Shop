@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   buttonOutline: (big, withIconLeft)=>({
     height: big? width*.11 : width*.09,
     width: big? width*.9 : width*.4,
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: 'black',
     alignSelf: big? 'center' : 'auto',
     justifyContent: 'space-evenly',
@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
   }),
   buttonPrimaryText: (big, withIconLeft) =>({
     color: 'white',
-    fontWeight: '700',
+    fontWeight: '600',
     fontSize: big? 15 : 10,
     marginRight: withIconLeft? width*.01:0,
   }),
   buttonOutlineText: (big, withIconLeft) =>({
     color: 'black',
-    fontWeight: '700',
+    fontWeight: '600',
     fontSize: big? 15 : 10,
     marginRight: withIconLeft? width*.01:0
   })
