@@ -15,8 +15,10 @@ import SwitchToggle from './SwitchToggle';
 import Tags from './Tags';
 import TextFieldMedium from './TextFieldMedium';
 import TextFieldSmall from './TextFieldSmall';
+import BottomNavigator from './BottomNavigator';
+import TabItem from './TabItem';
 
-export{
+export {
   AddressCard,
   Button,
   ButtonRounded,
@@ -33,5 +35,7 @@ export{
   SwitchToggle,
   Tags,
   TextFieldMedium,
-  TextFieldSmall
-}
+  TextFieldSmall,
+  BottomNavigator,
+  TabItem,
+};
