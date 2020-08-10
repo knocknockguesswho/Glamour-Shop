@@ -1,11 +1,13 @@
 import MyProfileSettings from './MyProfileSettings';
 import Catalogue from './Catalogue';
-import Splash from './Splash';
+import ShippingAddres from './ShippingAddress';
 import Signup from './Signup';
+import Splash from './Splash';
 
 export {
   Catalogue,
   MyProfileSettings,
-  Splash,
-  Signup
+  ShippingAddres,
+  Signup,
+  Splash
 }

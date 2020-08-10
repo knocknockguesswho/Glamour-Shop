@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     color: isError? '#F01F0E' : '#222222', 
   }),
   formLabel:(isError, isTyping, doneSubmitting, value)=>({
-    zIndex: 1,
+    // zIndex: 1,
     color: isError? '#F01F0E' : '#22222290',
     fontSize: 10,
     marginBottom: -width*.02,
