@@ -41,7 +41,7 @@ const {height, width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   formContainer: (isError) =>({
-    width: width*.85,
+    width: width*.9,
     height: width*.09,
     backgroundColor: 'white',
     borderRadius: 100,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }),
   formBar: (isError) =>({
-    width: width*.77,
+    width: width*.80,
     color: isError? '#F01F0E' : '#222222', 
   }),
   formLabel:(isError, isTyping, doneSubmitting, value)=>({

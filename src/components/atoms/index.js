@@ -8,6 +8,7 @@ import Color from './Color';
 import Filter from './Filter';
 import GridView from './GridView';
 import LowestToHigh from './LowestToHigh';
+import MultipleTextField from './MultipleTextField';
 import PopupWindow from './PopupWindow';
 import RangeFilter from './RangeFilter';
 import SearchBar from './SearchBar';
@@ -29,6 +30,7 @@ export {
   Filter,
   GridView,
   LowestToHigh,
+  MultipleTextField,
   PopupWindow,
   RangeFilter,
   SearchBar,
