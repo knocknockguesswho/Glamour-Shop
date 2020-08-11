@@ -5,6 +5,7 @@ import {
   AddShippingAddress,
   Catalogue,
   ChangeAddress,
+  MyOrders,
   Splash,
   Signup,
   ShippingAddres,
@@ -26,10 +27,27 @@ const MainApp = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Shop" component={Shop} />
       <Tab.Screen name="Bag" component={Bag} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={TabProfile} />
     </Tab.Navigator>
   );
 };
+
+const TabProfile = () =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen 
+        name='Profile'
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen 
+        name='MyOrders'
+        component={MyOrders}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  )
+}
 
 const App = () => {
   return (
@@ -44,6 +62,11 @@ const App = () => {
         component={ChangeAddress}
         options={{headerShown: false}}
       />
+      {/* <Stack.Screen
+        name="MyOrders"
+        component={MyOrders}
+        options={{headerShown: false}}
+      /> */}
       <Stack.Screen
         name="Splash"
         component={Splash}

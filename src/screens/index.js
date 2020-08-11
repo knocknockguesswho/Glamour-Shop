@@ -1,6 +1,7 @@
 import AddShippingAddress from './AddShippingAddress';
 import Catalogue from './Catalogue';
 import ChangeAddress from './ChangeAddress';
+import MyOrders from './MyOrders';
 import MyProfileSettings from './MyProfileSettings';
 import ShippingAddres from './ShippingAddress';
 import Signup from './Signup';
@@ -15,6 +16,7 @@ export {
     AddShippingAddress,
     Catalogue,
     ChangeAddress,
+    MyOrders,
     MyProfileSettings, 
     Splash,
     ShippingAddres, 

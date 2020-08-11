@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Fontisto';
+import IconFeather from 'react-native-vector-icons/Feather';
 
 import {
   
@@ -17,7 +18,7 @@ midCompTitle: Page Title
 rightCompName: 'Icon' name
 */
 
-export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTitle, rightComponent, rightCompName, backgroundColor}) =>{
+export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTitle, rightComponent, rightCompName, backgroundColor, search}) =>{
 
 
   const [comp, setComp] = useState({
@@ -35,7 +36,7 @@ export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTi
       <View style={styles.mainContainer(backgroundColor)}>
         {comp.leftComp?
           <TouchableOpacity onPress={handleBackButton} style={styles.leftComp}>
-            <Icon 
+            <IconFeather 
               name='chevron-left'
               size={25}
               color='#222'
@@ -45,11 +46,11 @@ export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTi
         <View style={styles.midComp}>
           <Text style={styles.midCompContent}>{comp.midCompTitle}</Text>
         </View>
-        <TouchableOpacity style={styles.rightComp}>
+        <TouchableOpacity activeOpacity={.9} style={styles.rightComp} onPress={search}>
           {rightComponent?
             <Icon 
               name={rightCompName}
-              size={25}
+              size={20}
               color='#222'
             />:<Text></Text>
           }
@@ -87,7 +88,10 @@ const styles = StyleSheet.create({
     fontWeight: '700'
   },
   rightComp:{
-    width: '15%',
+    width: '10%',
     height: width*.06,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginRight: width*.03
   }
 })
