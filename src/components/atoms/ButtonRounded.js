@@ -25,7 +25,7 @@ big? <bool>
 submit? submit(function())
 */
 
-export default ButtonRounded = ({name, big, submit}) =>{
+export default ButtonRounded = ({name, color, choose, submit}) =>{
 
   const [active, setActive] = useState(false)
 
@@ -38,7 +38,12 @@ export default ButtonRounded = ({name, big, submit}) =>{
       setActive(!active)
     }
   }
+
+  const [choice, setChoice] = useState(choose)
   
+  const handleChoosing = () =>{
+    setChoice(!choice)
+  }
 
   return(
     <>
@@ -78,6 +83,9 @@ export default ButtonRounded = ({name, big, submit}) =>{
             color='white'
           />
         </TouchableOpacity> :
+        name==='roundedColor'?
+        <TouchableOpacity activeOpacity={1} onPress={handleChoosing} activeOpacity={.8} style={!choice? styles.buttonRoundedColor:styles.buttonRoundedColorActive(color)}>
+        </TouchableOpacity>:
         <Text></Text>
       }
     </>
@@ -122,5 +130,24 @@ const styles = StyleSheet.create({
   buttonText:{
     color: 'white',
     fontSize: 15,
-  }
+  },
+  buttonRoundedColor:{
+    height: width*.04,
+    width: width*.04,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    borderWidth: width*.001,
+    borderColor: '#222'
+  },
+  buttonRoundedColorActive: (color) =>({
+    height: width*.04,
+    width: width*.04,
+    backgroundColor: color || 'red',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    elevation: 1.25
+  })
 })

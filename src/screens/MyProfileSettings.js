@@ -81,7 +81,7 @@ export class MyProfileSettings extends Component {
   handleGoBack = () =>{
     this.props.navigation.goBack()
   }
-
+  
   render() {
     return (
       <>
@@ -105,7 +105,7 @@ export class MyProfileSettings extends Component {
             })}
             <View style={{width: width*.9, flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center'}}>
               <Text style={styles.formTitle}>Password</Text>
-              <TouchableOpacity style={{justifyContent: 'center'}}>
+              <TouchableOpacity onPress={this.handleShowSlide} style={{justifyContent: 'center'}}>
                 <Text style={{fontSize: width*.03, color: '#22222280'}}>Change</Text>
               </TouchableOpacity>
             </View>
@@ -135,16 +135,19 @@ export class MyProfileSettings extends Component {
                 )
               })}
             </View>
-
           </View>
         </View>
-        <View style={styles.sliderContainer}>
-          <PasswordChange 
-            slideSize={this.state.slideSize} 
-            title='Password Change' 
-            showSlide={this.handleShowSlide} 
-          />
-        </View>
+        
+          <View style={styles.sliderContainer}>
+            <PasswordChange 
+              slideSize={this.state.slideSize} 
+              title='Password Change' 
+              showSlide={this.handleShowSlide} 
+            />
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#00000010'}}>
+
+            </View>
+          </View>
       </>
     )
   }

@@ -22,7 +22,21 @@ class ShippingAddress extends Component {
   constructor(){
     super();
     this.state = {
-      search: ''
+      search: '',
+      addresses: [
+        {
+          name:'Jane Doe',
+          address:'3 Newbridge Court Chino Hills, CA 91709, United States'
+        },
+        {
+          name:'Jane Doe',
+          address:'3 Newbridge Court Chino Hills, CA 91709, United States'
+        },
+        {
+          name:'Jane Doe',
+          address:'3 Newbridge Court Chino Hills, CA 91709, United States'
+        },
+      ]
     }
   }
 
@@ -42,7 +56,7 @@ class ShippingAddress extends Component {
           <SearchBar placeholder='Search' value={this.state.search} type='web-search' />
         </View>
         <View style={styles.addressList}>
-          <AddressList title='Shipping Address' />
+          <AddressList title='Shipping Address' addresses={this.state.addresses} />
         </View>
         <View>
           <Button title='ADD NEW ADDRESS' big={true} type='outline' submit={()=>console.log('Pressed')} />

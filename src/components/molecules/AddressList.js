@@ -12,34 +12,20 @@ import {
   AddressCard
 } from '../atoms';
 
-export default AddressList = ({title, submit}) =>{
-
-  const [address, setAddress] = useState([
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-  ])
+export default AddressList = ({title, addresses, submit}) =>{
 
   return(
     <>
       <View style={styles.mainContainer}>
         <View style={{alignSelf:'center'}}>
           <Text style={styles.formTitle}>{title}</Text>
-          {address.map((data, index)=>{
+          {addresses.map((data, index)=>{
             return(
               <AddressCard
                 key={index}
                 name={data.name}
                 address={data.address}
+                submit={submit}
               />
             )
           })}
