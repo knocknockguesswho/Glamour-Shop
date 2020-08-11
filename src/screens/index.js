@@ -10,17 +10,20 @@ import Home from './Home';
 import Shop from './Shop';
 import Bag from './Bag';
 import Profile from './Profile';
+import Login from './Login';
 
 export {
-    AddShippingAddress,
-    Catalogue,
-    ChangeAddress,
-    MyProfileSettings, 
-    Splash,
-    ShippingAddres, 
-    Signup,
-    Success,
-    Home, 
-    Shop, 
-    Bag, 
-    Profile};
+  AddShippingAddress,
+  Catalogue,
+  ChangeAddress,
+  MyProfileSettings,
+  Splash,
+  ShippingAddres,
+  Signup,
+  Login,
+  Success,
+  Home,
+  Shop,
+  Bag,
+  Profile,
+};
