@@ -13,6 +13,10 @@ import {
   HeaderBackButton
 } from '../components/molecules';
 
+import {
+  Button
+} from '../components/atoms'
+
 class Signup extends Component {
   constructor(){
     super();
@@ -52,7 +56,12 @@ class Signup extends Component {
     return (
       <View style={styles.mainContainer}>
         <HeaderBackButton submit={this.handleBackButton} />
-        <FormSignup title='Sign Up' formGroup={this.state.formGroup} submit={this.handleSignup}/>
+        <View style={styles.formGroup}>
+          <FormSignup title='Sign Up' formGroup={this.state.formGroup} submit={this.handleSignup}/>
+        </View>
+        <View>
+          <Button title='SIGN UP' big={true} type='primary' submit={this.handleSignup} />
+        </View>
       </View>
     )
   }
@@ -64,8 +73,12 @@ const styles = StyleSheet.create({
     height: height,
     width: width,
     alignSelf: 'center',
-    backgroundColor: '#F9F9F9'
+    backgroundColor: '#F9F9F9',
   },
+  formGroup:{
+    marginTop: width*.09,
+    alignItems: 'center'
+  }
 })
 
 export default Signup;

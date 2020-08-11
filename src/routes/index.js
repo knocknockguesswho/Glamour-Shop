@@ -1,8 +1,8 @@
-import {createStackNavigator, HeaderBackButton} from '@react-navigation/stack';
+import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
-import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import 'react-native-gesture-handler';
 import {
+  AddShippingAddress,
   Catalogue,
   ChangeAddress,
   Splash, 
@@ -32,7 +32,12 @@ const MainApp = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="ChangeAddress">
+    <Stack.Navigator initialRouteName="AddShippingAddress">
+      <Stack.Screen
+        name="AddShippingAddress"
+        component={AddShippingAddress}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="ChangeAddress"
         component={ChangeAddress}
