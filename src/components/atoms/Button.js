@@ -16,7 +16,7 @@ withIconLeft? boolean
 submit? submit(function())
 */
 
-export default Button = ({title, type, big, withIconLeft, submit}) =>{
+export default Button = ({title, type, big, withIconLeft, submit, description}) =>{
 
   withIconLeft=false
 
@@ -48,7 +48,20 @@ export default Button = ({title, type, big, withIconLeft, submit}) =>{
         <TouchableOpacity activeOpacity={.5} onPress={handlePressButton} style={styles.buttonOutline(big)}>
           <Text style={styles.buttonOutlineText(big)}>{title}</Text>
         </TouchableOpacity>:
-        
+        type==='listed'?
+        <TouchableOpacity activeOpacity={.9} onPress={submit} style={styles.listedButton}>
+          <View style={styles.leftSectionButton}>
+            <Text style={styles.listedButtonTitle}>{title}</Text>
+            <Text style={styles.listedButtonDesc}>{description}</Text>
+          </View>
+          <View style={styles.rightSectionButton}>
+            <Icon 
+              name='chevron-right'
+              size={15}
+              color='#22222280'
+            />
+          </View>
+        </TouchableOpacity>:
         <Text></Text>
       }
     </>
@@ -91,5 +104,32 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: big? 15 : 12,
     marginRight: withIconLeft? width*.01:0
-  })
+  }),
+  listedButton:{
+    width: width,
+    height: width*.2,
+    borderBottomWidth: width*.003,
+    borderBottomColor: '#22222208',
+    flexDirection: 'row',
+    paddingLeft: width*.04,
+    paddingRight: width*.04,
+    alignItems: 'center'
+  },
+  leftSectionButton: {
+    height: '60%',
+    width: '95%',
+    justifyContent: 'space-around',
+  },
+  listedButtonTitle:{
+    fontWeight: '700',
+    letterSpacing: width*.002
+  },
+  listedButtonDesc:{
+    fontSize: width*.025,
+    color: '#22222280'
+  },
+  rightSectionButton:{
+    justifyContent: 'center',
+
+  }
 })

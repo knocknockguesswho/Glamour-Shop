@@ -73,7 +73,7 @@ class Success extends Component {
   }
 }
 
-const {height, width} = Dimensions.get('window');
+const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   bgContainer:{
     height: height,
