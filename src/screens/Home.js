@@ -1,6 +1,7 @@
 import React from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {CoverHome} from '../../assets/images';
+import {Label, CardHome} from '../components/atoms';
 
 const Home = () => {
   return (
@@ -14,6 +15,12 @@ const Home = () => {
           <Text style={styles.desc}>You’ve never seen it before!</Text>
         </View>
         <Text style={styles.link}>View All</Text>
+      </View>
+      <View style={styles.container}>
+        <View style={styles.label}>
+          <Label />
+        </View>
+        <CardHome />
       </View>
     </View>
   );
@@ -41,4 +48,6 @@ const styles = StyleSheet.create({
   contentTitle: {fontSize: 34, fontWeight: 'bold', color: '#222222'},
   desc: {fontSize: 11, color: '#9B9B9B'},
   link: {fontSize: 11, color: '#222222', marginTop: 25},
+  container: {padding: 15},
+  label: {},
 });
