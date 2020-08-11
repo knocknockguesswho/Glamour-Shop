@@ -6,6 +6,7 @@ import MultipleTextFieldGroup from './MultipleTextFIeldGroup';
 import OrderCardList from './OrderCardList';
 import PasswordChange from './PasswordChange';
 import SortBy from './SortBy';
+import CardHome from './CardHome';
 export {
   AddressList,
   Colors,
@@ -15,4 +16,5 @@ export {
   OrderCardList,
   PasswordChange,
   SortBy,
+  CardHome,
 };

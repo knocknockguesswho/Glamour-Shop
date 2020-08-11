@@ -20,7 +20,7 @@ import TextFieldSmall from './TextFieldSmall';
 import BottomNavigator from './BottomNavigator';
 import TabItem from './TabItem';
 import Label from './Label';
-import CardHome from './CardHome';
+import CardHomeItem from './CardHomeItem';
 
 export {
   AddressCard,
@@ -45,5 +45,5 @@ export {
   BottomNavigator,
   TabItem,
   Label,
-  CardHome,
+  CardHomeItem,
 };

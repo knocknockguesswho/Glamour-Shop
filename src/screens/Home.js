@@ -1,7 +1,14 @@
 import React from 'react';
-import {ImageBackground, StyleSheet, Text, View} from 'react-native';
+import {
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+} from 'react-native';
 import {CoverHome} from '../../assets/images';
-import {Label, CardHome} from '../components/atoms';
+import {Label} from '../components/atoms';
+import {CardHome} from '../components/molecules';
 
 const Home = () => {
   return (
@@ -9,19 +16,18 @@ const Home = () => {
       <ImageBackground source={CoverHome} style={styles.background}>
         <Text style={styles.title}>Fashion Sale</Text>
       </ImageBackground>
-      <View style={styles.contentText}>
-        <View>
-          <Text style={styles.contentTitle}>New</Text>
-          <Text style={styles.desc}>You’ve never seen it before!</Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.contentText}>
+          <View>
+            <Text style={styles.contentTitle}>New</Text>
+            <Text style={styles.desc}>You’ve never seen it before!</Text>
+          </View>
+          <Text style={styles.link}>View All</Text>
         </View>
-        <Text style={styles.link}>View All</Text>
-      </View>
-      <View style={styles.container}>
-        <View style={styles.label}>
-          <Label />
+        <View style={styles.container}>
+          <CardHome />
         </View>
-        <CardHome />
-      </View>
+      </ScrollView>
     </View>
   );
 };
@@ -29,7 +35,7 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
-  page: {flex: 1, backgroundColor: '#E5E5E5'},
+  page: {flex: 1, backgroundColor: 'white'},
   background: {width: 400, height: 450},
   title: {
     fontSize: 48,
@@ -48,6 +54,7 @@ const styles = StyleSheet.create({
   contentTitle: {fontSize: 34, fontWeight: 'bold', color: '#222222'},
   desc: {fontSize: 11, color: '#9B9B9B'},
   link: {fontSize: 11, color: '#222222', marginTop: 25},
-  container: {padding: 15},
-  label: {},
+  container: {
+    marginTop: 20,
+  },
 });
