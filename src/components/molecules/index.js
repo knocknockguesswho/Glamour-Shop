@@ -5,12 +5,12 @@ import HeaderBackButton from './HeaderBackButton';
 import MultipleTextFieldGroup from './MultipleTextFIeldGroup';
 import PasswordChange from './PasswordChange';
 import SortBy from './SortBy';
-export{
+export {
   AddressList,
   Colors,
   FormSignup,
   HeaderBackButton,
   MultipleTextFieldGroup,
   PasswordChange,
-  SortBy
-}
+  SortBy,
+};

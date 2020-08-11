@@ -17,10 +17,11 @@ midCompTitle: Page Title
 rightCompName: 'Icon' name
 */
 
-export default HeaderBackButton = ({submit, middleComponent, midCompTitle, rightComponent, rightCompName}) =>{
+export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTitle, rightComponent, rightCompName, backgroundColor}) =>{
 
 
   const [comp, setComp] = useState({
+    leftComp: leftComp==undefined||leftComp==true? true : false,
     midCompTitle: middleComponent? midCompTitle : '',
     rightCompName: rightComponent? rightCompName : ''
   })
@@ -31,14 +32,16 @@ export default HeaderBackButton = ({submit, middleComponent, midCompTitle, right
 
   return(
     <>
-      <View style={styles.mainContainer}>
-        <TouchableOpacity onPress={handleBackButton} style={styles.leftComp}>
-          <Icon 
-            name='chevron-left'
-            size={25}
-            color='#222'
-          />
-        </TouchableOpacity>
+      <View style={styles.mainContainer(backgroundColor)}>
+        {comp.leftComp?
+          <TouchableOpacity onPress={handleBackButton} style={styles.leftComp}>
+            <Icon 
+              name='chevron-left'
+              size={25}
+              color='#222'
+            />
+          </TouchableOpacity>: <></>
+        }
         <View style={styles.midComp}>
           <Text style={styles.midCompContent}>{comp.midCompTitle}</Text>
         </View>
@@ -58,17 +61,17 @@ export default HeaderBackButton = ({submit, middleComponent, midCompTitle, right
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
-  mainContainer:{
+  mainContainer: (backgroundColor) =>({
     height: width*.15,
     width: width,
     paddingTop: width*.05,
     alignSelf: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'white',
+    backgroundColor: backgroundColor || 'white',
     paddingLeft: width*.03,
     paddingRight: width*.03
-  },
+  }),
   leftComp:{
     width: '15%',
     height: width*.06,

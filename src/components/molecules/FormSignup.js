@@ -1,60 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
-import {
-  ButtonWithArrow,
-  TextFieldMedium,
-} from '../atoms';
+import {ButtonWithArrow, TextFieldMedium} from '../atoms';
 
-export default FormSignup = ({title, formGroup}) =>{
-
-  return(
+export default FormSignup = ({title, formGroup, link}) => {
+  return (
     <>
       <View style={styles.mainContainer}>
         <Text style={styles.formTitle}>{title}</Text>
-        <View style={{marginBottom: width*.01, alignItems: 'center'}}>
-          {formGroup.map((form, index)=>{
-            return(
-              <TextFieldMedium 
-                key={index} 
-                placeholder={form.placeholder} 
-                value={form.value} type={form.type} 
-                secure={form.secure} 
-                check={true} 
-                submit={()=>console.log('Test Form')} 
+        <View style={{marginBottom: width * 0.01, alignItems: 'center'}}>
+          {formGroup.map((form, index) => {
+            return (
+              <TextFieldMedium
+                key={index}
+                placeholder={form.placeholder}
+                value={form.value}
+                type={form.type}
+                secure={form.secure}
+                check={true}
+                submit={() => console.log('Test Form')}
               />
-            )
+            );
           })}
         </View>
         <View style={styles.buttonWithArrow}>
-          <ButtonWithArrow title='Already have an account?' submit={()=>console.log('go to login')} />
+          <ButtonWithArrow
+            title={link}
+            submit={() => console.log('go to login')}
+          />
         </View>
       </View>
     </>
-  )
-}
+  );
+};
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
-  mainContainer:{
-    width: width*.95,
+  mainContainer: {
+    width: width * 0.95,
   },
-  formTitle:{
+  formTitle: {
     fontWeight: 'bold',
     fontSize: 34,
     color: 'black',
-    marginBottom: width*.12
+    marginBottom: width * 0.12,
   },
-  buttonWithArrow:{
-    width: width*.9,
+  buttonWithArrow: {
+    width: width * 0.9,
     alignItems: 'flex-end',
-    marginBottom: width*.05
-  }
-})
+    marginBottom: width * 0.05,
+  },
+});
