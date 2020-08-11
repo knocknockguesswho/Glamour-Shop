@@ -34,7 +34,7 @@ const MainApp = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
