@@ -82,14 +82,14 @@ const styles = StyleSheet.create({
   }),
   buttonPrimaryText: (big, withIconLeft) =>({
     color: 'white',
-    fontWeight: '600',
-    fontSize: big? 15 : 10,
+    fontWeight: big? '600' : '700',
+    fontSize: big? 15 : 12,
     marginRight: withIconLeft? width*.01:0,
   }),
   buttonOutlineText: (big, withIconLeft) =>({
     color: 'black',
     fontWeight: '600',
-    fontSize: big? 15 : 10,
+    fontSize: big? 15 : 12,
     marginRight: withIconLeft? width*.01:0
   })
 })

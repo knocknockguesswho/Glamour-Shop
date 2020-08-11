@@ -8,6 +8,7 @@ import {
   Splash,
   Signup,
   ShippingAddres,
+  Success,
   Home,
   Shop,
   Bag,
@@ -32,7 +33,7 @@ const MainApp = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Splash">
+    <Stack.Navigator initialRouteName="Success">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -51,6 +52,11 @@ const App = () => {
       <Stack.Screen
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Success"
+        component={Success}
         options={{headerShown: false}}
       />
       <Stack.Screen
