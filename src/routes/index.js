@@ -5,14 +5,14 @@ import {
   AddShippingAddress,
   Catalogue,
   ChangeAddress,
-  Splash, 
-  Signup, 
+  Splash,
+  Signup,
   ShippingAddres,
   Success,
-  Home, 
-  Shop, 
-  Bag, 
-  Profile
+  Home,
+  Shop,
+  Bag,
+  Profile,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';

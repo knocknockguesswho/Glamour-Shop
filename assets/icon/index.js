@@ -1,3 +1,4 @@
+import IconSplash from './icon-SB.svg';
 import IconHome from './ic-home.svg';
 import IconHomeActive from './ic-home-active.svg';
 import IconShop from './ic-shop.svg';
@@ -8,6 +9,7 @@ import IconProfile from './ic-profile.svg';
 import IconProfileActive from './ic-profile-active.svg';
 
 export {
+  IconSplash,
   IconHome,
   IconHomeActive,
   IconShop,
