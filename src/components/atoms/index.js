@@ -19,6 +19,8 @@ import TextFieldMedium from './TextFieldMedium';
 import TextFieldSmall from './TextFieldSmall';
 import BottomNavigator from './BottomNavigator';
 import TabItem from './TabItem';
+import Label from './Label';
+import CardHome from './CardHome';
 
 export {
   AddressCard,
@@ -42,4 +44,6 @@ export {
   TextFieldSmall,
   BottomNavigator,
   TabItem,
+  Label,
+  CardHome,
 };
