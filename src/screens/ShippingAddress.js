@@ -27,7 +27,7 @@ class ShippingAddress extends Component {
   }
 
   handleBackButton = () =>{
-    console.log('Go Back')
+    this.props.navigation.goBack();
   }
 
   handleGoToChangeAddress = () =>{

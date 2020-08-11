@@ -15,6 +15,7 @@ import {
   Bag,
   Profile,
   Login,
+  MyProfileSettings,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -35,7 +36,7 @@ const MainApp = () => {
 
 const TabProfile = () =>{
   return(
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName='Profile'>
       <Stack.Screen 
         name='Profile'
         component={Profile}
@@ -44,6 +45,11 @@ const TabProfile = () =>{
       <Stack.Screen 
         name='MyOrders'
         component={MyOrders}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen 
+        name='ShippingAddress'
+        component={ShippingAddres}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -63,11 +69,6 @@ const App = () => {
         component={ChangeAddress}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
-        name="MyOrders"
-        component={MyOrders}
-        options={{headerShown: false}}
-      /> */}
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -84,6 +85,11 @@ const App = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="MyProfileSettings"
+        component={MyProfileSettings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Success"
         component={Success}
         options={{headerShown: false}}
@@ -91,11 +97,6 @@ const App = () => {
       <Stack.Screen
         name="Catalogue"
         component={Catalogue}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ShippingAddress"
-        component={ShippingAddres}
         options={{headerShown: false}}
       />
       <Stack.Screen
