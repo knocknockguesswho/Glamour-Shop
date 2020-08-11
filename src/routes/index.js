@@ -3,7 +3,6 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {
   AddShippingAddress,
-  Catalogue,
   ChangeAddress,
   MyOrders,
   Splash,
@@ -16,6 +15,7 @@ import {
   Profile,
   Login,
   MyProfileSettings,
+  MyBagCheckout,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -58,7 +58,7 @@ const TabProfile = () =>{
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="MyBagCheckout">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -90,13 +90,13 @@ const App = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Success"
-        component={Success}
+        name="MyBagCheckout"
+        component={MyBagCheckout}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Catalogue"
-        component={Catalogue}
+        name="Success"
+        component={Success}
         options={{headerShown: false}}
       />
       <Stack.Screen

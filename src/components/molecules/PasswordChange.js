@@ -21,7 +21,7 @@ export default PasswordChange = ({title, slideSize, showSlide}) =>{
     bottom: slideSize
   });
 
-  const draggedValue = new Animated.Value(slideSize);
+  const draggedValue = new Animated.Value(slideSize || position.bottom);
   const ModalRef = useRef(null);
 
   return(
@@ -29,10 +29,11 @@ export default PasswordChange = ({title, slideSize, showSlide}) =>{
       <View style={styles.sheetContainer}>
         <SlidingUpPanel
         ref={ModalRef}
-        draggableRange={{top: height-position.top, bottom: slideSize}}
+        draggableRange={{top: height-position.top, bottom: 0}}
         animatedValue={draggedValue}
         height={height}
-        friction={0}
+        friction={.5}
+        onMomentumDragStart={()=>showSlide()}
         >
           <View style={styles.sheetContent}>
             <TouchableOpacity onPress={showSlide} activeOpacity={1} style={styles.sheetHandle}></TouchableOpacity>
@@ -68,10 +69,10 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 10,
-    elevation: 100,
+    elevation: 10,
   },
   sheetHandle:{
-    height: 8,
+    height: 5,
     width: 70,
     backgroundColor: '#bbb',
     borderRadius: 6,

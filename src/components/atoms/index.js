@@ -10,6 +10,7 @@ import GridView from './GridView';
 import LowestToHigh from './LowestToHigh';
 import MultipleTextField from './MultipleTextField';
 import OrderCard from './OrderCard';
+import PaymentCard from './PaymentCard';
 import PopupWindow from './PopupWindow';
 import RangeFilter from './RangeFilter';
 import SearchBar from './SearchBar';
@@ -35,6 +36,7 @@ export {
   LowestToHigh,
   MultipleTextField,
   OrderCard,
+  PaymentCard,
   PopupWindow,
   RangeFilter,
   SearchBar,

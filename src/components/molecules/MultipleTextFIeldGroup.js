@@ -72,7 +72,7 @@ export default MultipleTextFieldList = ({title, formGroup, submit}) =>{
         <View style={styles.formGroupContainer}>
           {form.map((data, index)=>{
             return(
-              <MultipleTextField formgroup={data} />
+              <MultipleTextField key={index} formgroup={data} />
             )
           })}
         </View>
