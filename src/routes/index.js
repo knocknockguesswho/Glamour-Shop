@@ -5,6 +5,7 @@ import {
   AddShippingAddress,
   Catalogue,
   ChangeAddress,
+  MyOrders,
   Splash,
   Signup,
   ShippingAddres,
@@ -13,6 +14,7 @@ import {
   Shop,
   Bag,
   Profile,
+  Login,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -26,10 +28,27 @@ const MainApp = () => {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Shop" component={Shop} />
       <Tab.Screen name="Bag" component={Bag} />
-      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Profile" component={TabProfile} />
     </Tab.Navigator>
   );
 };
+
+const TabProfile = () =>{
+  return(
+    <Stack.Navigator>
+      <Stack.Screen 
+        name='Profile'
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen 
+        name='MyOrders'
+        component={MyOrders}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  )
+}
 
 const App = () => {
   return (
@@ -44,6 +63,11 @@ const App = () => {
         component={ChangeAddress}
         options={{headerShown: false}}
       />
+      {/* <Stack.Screen
+        name="MyOrders"
+        component={MyOrders}
+        options={{headerShown: false}}
+      /> */}
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -52,6 +76,11 @@ const App = () => {
       <Stack.Screen
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
         options={{headerShown: false}}
       />
       <Stack.Screen

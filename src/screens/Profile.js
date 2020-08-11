@@ -15,7 +15,7 @@ import {
   Button
 } from '../components/atoms';
 
-const Profile = () => {
+const Profile = (props) => {
 
   const handleSearchButton = () =>{
     console.log('Searching')
@@ -31,7 +31,7 @@ const Profile = () => {
     {
       title: 'My Orders',
       description: 'Already have 12 orders',
-      submit: ()=> console.log('Pressed') 
+      submit: ()=> props.navigation.push('MyOrders') 
     },
     {
       title: 'Shipping Address',
@@ -47,12 +47,12 @@ const Profile = () => {
 
   return (
     <View style={styles.mainContainer}>
-      <HeaderBackButton 
-        submit={handleSearchButton} 
+      <HeaderBackButton
         rightComponent={true}
         rightCompName='search'
         leftComp={false}
         backgroundColor='#F9F9F9'
+        search={handleSearchButton}
       />
       <View style={{paddingLeft: width*.04, paddingLeft: width*.04}}>
         <Text style={styles.profileTitle}>My Profile</Text>
