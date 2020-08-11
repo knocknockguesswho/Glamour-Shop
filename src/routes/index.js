@@ -14,6 +14,7 @@ import {
   Shop,
   Bag,
   Profile,
+  Login,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -75,6 +76,11 @@ const App = () => {
       <Stack.Screen
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
         options={{headerShown: false}}
       />
       <Stack.Screen

@@ -6,7 +6,7 @@ import MultipleTextFieldGroup from './MultipleTextFIeldGroup';
 import OrderCardList from './OrderCardList';
 import PasswordChange from './PasswordChange';
 import SortBy from './SortBy';
-export{
+export {
   AddressList,
   Colors,
   FormSignup,
@@ -14,5 +14,5 @@ export{
   MultipleTextFieldGroup,
   OrderCardList,
   PasswordChange,
-  SortBy
-}
+  SortBy,
+};
