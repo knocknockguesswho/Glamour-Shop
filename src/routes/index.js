@@ -5,13 +5,14 @@ import {
   AddShippingAddress,
   Catalogue,
   ChangeAddress,
-  Splash, 
-  Signup, 
-  ShippingAddres, 
-  Home, 
-  Shop, 
-  Bag, 
-  Profile
+  Splash,
+  Signup,
+  ShippingAddres,
+  Success,
+  Home,
+  Shop,
+  Bag,
+  Profile,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -32,7 +33,7 @@ const MainApp = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="AddShippingAddress">
+    <Stack.Navigator initialRouteName="Success">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -51,6 +52,11 @@ const App = () => {
       <Stack.Screen
         name="Signup"
         component={Signup}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Success"
+        component={Success}
         options={{headerShown: false}}
       />
       <Stack.Screen
