@@ -1,3 +1,4 @@
+import AddShippingAddress from './AddShippingAddress';
 import Catalogue from './Catalogue';
 import ChangeAddress from './ChangeAddress';
 import MyProfileSettings from './MyProfileSettings';
@@ -10,6 +11,7 @@ import Bag from './Bag';
 import Profile from './Profile';
 
 export {
+    AddShippingAddress,
     Catalogue,
     ChangeAddress,
     MyProfileSettings, 

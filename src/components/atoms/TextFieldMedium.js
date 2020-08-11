@@ -22,7 +22,7 @@ secure? boolean
 submit? submit(function())
 */
 
-export default TextFieldMedium = ({placeholder, value, type, secure, submit}) =>{
+export default TextFieldMedium = ({placeholder, value, type, secure, submit, check, withArrow}) =>{
 
   const [input, setInput] = useState({
     value: value,
@@ -45,7 +45,7 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit}) =>
         <Text style={styles.formLabel(input.isError, input.isTyping, input.doneSubmitting, input.value)}>{input.isTyping&&input.doneSubmitting||input.value!==''? placeholder : ''}</Text>
         <View style={styles.formContainer(input.isError)}>
           <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: false, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
-            {input.value!==''?
+            {input.value!==''&&check==true?
               <View style={styles.validation}>
                 <Icon 
                   name={input.isError? 'x' : 'check'}
@@ -53,6 +53,14 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit}) =>
                   color={input.isError? '#F01F0E' : '#2AA952'}
                 />
               </View>:
+              withArrow?
+                <TouchableOpacity style={styles.withArrow}>
+                  <Icon 
+                    name='chevron-right'
+                    size={15}
+                    color='#22222280'
+                  />
+                </TouchableOpacity>:
               <></>
             }
         </View>
@@ -108,5 +116,8 @@ const styles = StyleSheet.create({
     marginTop: -width*.01,
     marginLeft: width*.04,
     color: '#F01F0E'
+  },
+  withArrow:{
+    marginTop: width*.04
   }
 })

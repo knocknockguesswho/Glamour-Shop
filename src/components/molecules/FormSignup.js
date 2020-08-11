@@ -9,12 +9,11 @@ import {
 } from 'react-native';
 
 import {
-  Button,
   ButtonWithArrow,
   TextFieldMedium,
 } from '../atoms';
 
-export default FormSignup = ({title, formGroup, submit}) =>{
+export default FormSignup = ({title, formGroup}) =>{
 
   return(
     <>
@@ -23,14 +22,20 @@ export default FormSignup = ({title, formGroup, submit}) =>{
         <View style={{marginBottom: width*.01, alignItems: 'center'}}>
           {formGroup.map((form, index)=>{
             return(
-              <TextFieldMedium key={index} placeholder={form.placeholder} value={form.value} type={form.type} secure={form.secure} submit={()=>console.log('Test Form')} />
+              <TextFieldMedium 
+                key={index} 
+                placeholder={form.placeholder} 
+                value={form.value} type={form.type} 
+                secure={form.secure} 
+                check={true} 
+                submit={()=>console.log('Test Form')} 
+              />
             )
           })}
         </View>
         <View style={styles.buttonWithArrow}>
           <ButtonWithArrow title='Already have an account?' submit={()=>console.log('go to login')} />
         </View>
-        <Button title='SIGN UP' big={true} type='primary' submit={submit} />
       </View>
     </>
   )
@@ -39,12 +44,7 @@ export default FormSignup = ({title, formGroup, submit}) =>{
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   mainContainer:{
-    height: height/1.15,
     width: width*.95,
-    position: 'absolute',
-    bottom: 0,
-    left: width*.025,
-    right: width*.025
   },
   formTitle:{
     fontWeight: 'bold',
