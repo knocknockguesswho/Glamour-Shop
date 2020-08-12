@@ -19,6 +19,7 @@ import {
   OrderDetails,
   Search,
   Filter,
+  ProductCard,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -115,6 +116,11 @@ const App = () => {
       <Stack.Screen
         name="Filter"
         component={Filter}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductCard"
+        component={ProductCard}
         options={{headerShown: false}}
       />
       <Stack.Screen

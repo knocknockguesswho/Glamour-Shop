@@ -16,6 +16,9 @@ class Signup extends Component {
   constructor() {
     super();
     this.state = {
+      Name: '',
+      Email: '',
+      Password: '',
       formGroup: [
         {
           placeholder: 'Name',
@@ -39,15 +42,26 @@ class Signup extends Component {
     };
   }
 
-  handleSignup = () => {
-    console.log('Thanks for register');
+  
+  handleSignup = (param, param2) => {
+    this.setState(prevState => ({
+      formGroup: prevState.formGroup.map(
+        form => (form.placeholder===param? Object.assign(form, {...form, value: param2}) : form)
+      )
+    }))
   };
-
-  handleBackButton = () => {
-    console.log('Go Back');
-  };
-
+  
+  // handleBackButton = () => {
+  //   this.props.navigation.goBack()
+  // };
+  
   render() {
+
+    //panggil per-index
+    console.log(this.state.formGroup[0].value)
+    console.log(this.state.formGroup[1].value)
+    console.log(this.state.formGroup[2].value)
+    ///
     return (
       <View style={styles.mainContainer}>
         <HeaderBackButton submit={this.handleBackButton} />
@@ -64,7 +78,7 @@ class Signup extends Component {
             title="SIGN UP"
             big={true}
             type="primary"
-            submit={this.handleSignup}
+            submit={()=>console.log('test')}
           />
         </View>
       </View>

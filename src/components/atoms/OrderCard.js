@@ -15,18 +15,17 @@ submit? submit(function())
 */
 
 
-export default OrderCard = ({orderNum, orderDate, trackingNum, qty, totalAmt, deliverStatus, submit}) =>{
+export default OrderCard = ({orderNum, orderDate, trackingNum, qty, totalAmt, deliverStatus, navigation}) =>{
 
   const [active, setActive] = useState(false)
 
   const handleCardPress = () =>{
-    if(submit!==undefined){
-      submit()
-      setActive(!active)
-    } else{
-      console.log(`variable 'submit' expecting function`)
-      setActive(!active)
-    }
+    navigation.push('OrderDetails',{
+      orderNum: orderNum,
+      orderDate: orderDate,
+      trackingNum: trackingNum,
+      deliverStatus: deliverStatus
+    })
   }
 
 
