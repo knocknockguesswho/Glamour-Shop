@@ -1,15 +1,16 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Label from './Label';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
-const CardHomeItem = (props) => {
+const CardHomeItem = ({onPress, img}) => {
   return (
-    <View style={{marginRight: 16}}>
+    <TouchableOpacity style={{marginRight: 16}} onPress={onPress}>
       <View style={styles.container}>
         <Label />
-        <Image style={styles.image} source={props.img} />
+        <Image style={styles.image} source={img} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

@@ -9,6 +9,7 @@ import {
 import {CoverHome} from '../../assets/images';
 import {Label} from '../components/atoms';
 import {CardHome} from '../components/molecules';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Home = () => {
   return (
@@ -22,7 +23,9 @@ const Home = () => {
             <Text style={styles.contentTitle}>New</Text>
             <Text style={styles.desc}>You’ve never seen it before!</Text>
           </View>
-          <Text style={styles.link}>View All</Text>
+          <TouchableOpacity onPress={() => alert('ok')}>
+            <Text style={styles.link}>View All</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.container}>
           <CardHome />

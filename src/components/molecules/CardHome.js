@@ -8,9 +8,12 @@ const CardHome = () => {
       horizontal
       showsHorizontalScrollIndicator={false}
       style={styles.container}>
-      <CardHomeItem img={require('../../../assets/images/dumy1.png')} />
-      <CardHomeItem img={require('../../../assets/images/dumy2.png')} />
-      <CardHomeItem img={require('../../../assets/images/dumy1.png')} />
+      <CardHomeItem
+        onPress={() => alert('Image 1')}
+        img={require('../../../assets/images/dumy1.png')}
+      />
+      {/* <CardHomeItem img={require('../../../assets/images/dumy2.png')} />
+      <CardHomeItem img={require('../../../assets/images/dumy1.png')} /> */}
     </ScrollView>
   );
 };
