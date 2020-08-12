@@ -9,6 +9,7 @@ import PaymentChoice from './PaymentChoice';
 import SortBy from './SortBy';
 import ToggleOnOffWithTitle from './ToggleOnOffWithTitle';
 import CardHome from './CardHome';
+import CartBagList from './CartBagList';
 export {
   AddressList,
   Colors,
@@ -21,4 +22,5 @@ export {
   SortBy,
   ToggleOnOffWithTitle,
   CardHome,
+  CartBagList,
 };
