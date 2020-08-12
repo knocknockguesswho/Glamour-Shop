@@ -69,7 +69,7 @@ const TabProfile = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}

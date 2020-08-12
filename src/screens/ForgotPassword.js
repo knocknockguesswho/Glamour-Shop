@@ -65,7 +65,7 @@ export class ForgotPassword extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.mainContainer}>
-        <HeaderBackButton submit={() => navigation.navigate('Signup')} />
+        <HeaderBackButton submit={() => navigation.goBack()} />
         <View style={styles.formGroup}>
           <FormSignup
             title="Forgot Password"
