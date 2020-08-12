@@ -13,27 +13,24 @@ import {FormSignup, HeaderBackButton} from '../components/molecules';
 
 import {Button} from '../components/atoms';
 import {connect} from 'react-redux';
-import {Register} from '../redux/actions/auth';
+import {Verification} from '../redux/actions/auth';
 
 class Signup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      Name: '',
+      Email: '',
+      Password: '',
       formGroup: [
         {
-          placeholder: 'Name',
-          value: '',
-          type: 'none',
-          secure: false,
-        },
-        {
           placeholder: 'Email',
-          value: '',
+          value: this.props.auth.data.email || '',
           type: 'emailAddress',
           secure: false,
         },
         {
-          placeholder: 'Password',
+          placeholder: 'Code',
           value: '',
           type: 'password',
           secure: true,
@@ -56,16 +53,13 @@ class Signup extends Component {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
     const data = {
-      name: formGroup[0].value,
-      email: formGroup[1].value,
-      password: formGroup[2].value,
+      email: formGroup[0].value,
+      code: formGroup[1].value,
     };
-    await dispatch(Register(data))
+    await dispatch(Verification(data))
       .then((res) => {
-        Alert.alert(
-          'Register Success, Check your email for get activation code',
-        );
-        navigation.replace('Verification');
+        Alert.alert('Verify Success');
+        navigation.replace('Login', {email: data.email});
       })
       .catch((err) => {
         Alert.alert(err.response.data.data);
@@ -74,22 +68,27 @@ class Signup extends Component {
   };
 
   render() {
-    const {navigation} = this.props;
+    //panggil per-index
+    // console.log(this.state.formGroup[0].value);
+    // console.log(this.state.formGroup[1].value);
+    // console.log(this.state.formGroup[2].value);
+    ///
     return (
       <View style={styles.mainContainer}>
-        <HeaderBackButton submit={this.handleBackButton} />
+        <HeaderBackButton
+          submit={() => this.props.navigation.replace('Signup')}
+        />
         <View style={styles.formGroup}>
           <FormSignup
-            title="Sign Up"
-            link="Already have an account?"
+            title="Verification"
+            link={null}
             formGroup={this.state.formGroup}
             submit={this.getData}
-            onPress={() => navigation.navigate('Login')}
           />
         </View>
         <View>
           <Button
-            title="SIGN UP"
+            title="Verify"
             big={true}
             type="primary"
             submit={() => {

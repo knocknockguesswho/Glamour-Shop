@@ -20,6 +20,8 @@ import {
   Search,
   Filter,
   ProductCard,
+  Verification,
+  ForgotPassword,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -67,7 +69,7 @@ const TabProfile = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Signup">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -91,6 +93,16 @@ const App = () => {
       <Stack.Screen
         name="Login"
         component={Login}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Forgot"
+        component={ForgotPassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Verification"
+        component={Verification}
         options={{headerShown: false}}
       />
       <Stack.Screen

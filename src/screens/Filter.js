@@ -12,16 +12,84 @@ import {
   Tags
 } from '../components/atoms'
 
-const Filter = () => {
+const Filter = (props) => {
 
-  const [sizes, setSizes] = useState(['XS','S','M','L','XL'])
+  const [sizes, setSizes] = useState([
+    {
+      name: 'XS',
+      active: false
+    },
+    {
+      name: 'S',
+      active: false
+    },
+    {
+      name: 'M',
+      active: false
+    },
+    {
+      name: 'L',
+      active: false
+    },
+    {
+      name: 'XL',
+      active: false
+    }
+  ])
 
-  const [categories, setCategories] = useState(['All', 'Women', 'Men', 'Boys', 'Girls'])
+  const [categories, setCategories] = useState([
+    {
+      name: 'All',
+      active: false
+    },
+    {
+      name: 'Women',
+      active: false
+    },
+    {
+      name: 'Men',
+      active: false
+    },
+    {
+      name: 'Boys',
+      active: false
+    },
+    {
+      name: 'Girls',
+      active: false
+    }
+  ])
 
 
+  const handleDiscard = () =>{
+
+  }
+
+  const handleAppy = () =>{
+
+  }
+
+  const handleFilterButton = (name) => {
+    setSortByButton([...sortByButton].map(obj =>{
+      if(obj.name===name){
+        return{
+          ...obj,
+          active: true
+        }
+      } else{
+        return{
+          ...obj,
+          active: false
+        }
+      }
+    }))
+    if(sortName!==name&&sortName!==''){
+      sortNameSubmit(name)
+    }
+  };
 
   handleBackButton = () => {
-    this.props.navigation.goBack();
+    props.navigation.goBack();
   };
   return (
     <View style={styles.page}>
@@ -49,7 +117,7 @@ const Filter = () => {
               <Tags 
                 key={index}
                 type='small'
-                title={size}
+                title={size.name}
               />
             )
           })}
@@ -67,7 +135,7 @@ const Filter = () => {
                <View style={{marginRight: width*.02, marginBottom: width*.02}}>
                   <Tags 
                     type='primary'
-                    title={item}
+                    title={item.name}
                   />
                </View>
              )}
@@ -81,11 +149,12 @@ const Filter = () => {
           </View>
       </View>
 
-      <Gap height={180} /> 
+      <View style={styles.buttonContainer}>
         <View style={styles.button}>
           <Button type="outline" title="Discard" />
           <Button type="primary" title="Apply" />
         </View>
+      </View> 
     </View>
   );
 };
@@ -105,6 +174,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: width*.07,
     justifyContent: 'center',
     elevation: 2
+  },
+  buttonContainer:{
+    position: 'absolute',
+    bottom: 0,
+    right: 0,
+    left: 0,
+    paddingVertical: width*.03,
+    elevation: 30,
+    backgroundColor: 'white'
   },
   button: {
     flexDirection: 'row',

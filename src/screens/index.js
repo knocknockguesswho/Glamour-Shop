@@ -16,6 +16,8 @@ import Login from './Login';
 import Search from './Search';
 import Filter from './Filter';
 import ProductCard from './ProductCard';
+import Verification from './Verification';
+import ForgotPassword from './ForgotPassword';
 
 export {
   AddShippingAddress,
@@ -36,4 +38,6 @@ export {
   Search,
   Filter,
   ProductCard,
+  Verification,
+  ForgotPassword,
 };

@@ -10,9 +10,8 @@ import {
 
 import {ButtonWithArrow, TextFieldMedium} from '../atoms';
 
-export default FormSignup = ({title, formGroup, link, submit}) => {
-
-  const [input, setInput] = useState({})
+const FormSignup = ({title, formGroup, link, submit, onPress}) => {
+  const [input, setInput] = useState({});
 
   return (
     <>
@@ -34,16 +33,14 @@ export default FormSignup = ({title, formGroup, link, submit}) => {
           })}
         </View>
         <View style={styles.buttonWithArrow}>
-          <ButtonWithArrow
-            title={link}
-            submit={() => console.log('go to login')}
-          />
+          {link !== null && <ButtonWithArrow title={link} submit={onPress} />}
         </View>
       </View>
     </>
   );
 };
 
+export default FormSignup;
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   mainContainer: {

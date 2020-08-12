@@ -82,7 +82,7 @@ export default SortBy = ({title, slideSize, showSlide, sortName, sortNameSubmit}
             <View style={styles.sliderMain}>
               {sortByButton.map((button, index)=>{
                 return(
-                  <TouchableOpacity activeOpacity={.9} onPress={()=>handleSortByButton(button.name)} style={styles.sortButton(button.active)}>
+                  <TouchableOpacity key={index} activeOpacity={.9} onPress={()=>handleSortByButton(button.name)} style={styles.sortButton(button.active)}>
                     <Text style={styles.buttonTitle(button.active)}>{button.name}</Text>
                   </TouchableOpacity>
                 )

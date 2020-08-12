@@ -12,7 +12,7 @@ import {
   Color
 } from '../atoms';
 
-export default Colors = () =>{
+export default Colors = ({}) =>{
 
   const [colors, setColors] = useState([
     {
