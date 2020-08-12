@@ -71,6 +71,10 @@ class MyOrders extends Component {
     this.props.navigation.goBack()
   }
 
+  handleGoToOrderDetails = () =>{
+    this.props.navigation.push('OrderDetails')
+  }
+
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -80,7 +84,10 @@ class MyOrders extends Component {
         </Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.cardList}>
-            <OrderCardList listData={this.state.cardList} />
+            <OrderCardList 
+              listData={this.state.cardList} 
+              submit={this.handleGoToOrderDetails}
+            />
           </View>
         </ScrollView>
       </View>
