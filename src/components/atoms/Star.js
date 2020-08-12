@@ -20,24 +20,29 @@ export default Star = ({submit, color, rating}) => {
   });
 
   const handleSetStars = () => {
-    const max = 5;
+    for (let i = 0; i < stars.total; i++) {
+      stars.push(<Icon name="star" size={15} color="#FFBA49" />);
+    }
   };
 
   useEffect(() => {
-    handleSetStars();
+    handleSetStars;
   }, []);
 
   console.log(stars.stars);
 
   return (
     <>
-      <View style={{flexDirection: 'row'}}>
-        <Icon
-          // key={index}
-          name="star"
-          size={15}
-          color="#FFBA49"
-        />
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+        <Icon name="star" size={15} color="#FFBA49" />
+        <Icon name="star" size={15} color="#FFBA49" />
+        <Icon name="star" size={15} color="#FFBA49" />
+        <Icon name="star" size={15} color="#FFBA49" />
+        <Icon name="staro" size={15} color="#22222295" />
+        {/* {stars.stars.map((star, index)=>{
+          return star
+        })} */}
+        <Text>(10)</Text>
       </View>
     </>
   );

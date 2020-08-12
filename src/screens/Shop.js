@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, Dimensions, ScrollView, Image} from 'react-native';
 import {HeaderBackButton} from '../components/molecules';
-import {Filter, GridView, LowestToHigh} from '../components/atoms';
+import {Filter, GridView, SortByButton} from '../components/atoms';
 
 import {
-  CardWithLeftImageList
+  CardWithLeftImageList,
+  SortBy
 } from '../components/molecules'
 
-const Shop = () => {
+const Shop = (props) => {
 
   const [items, setItems] = useState([
     {
@@ -28,7 +29,7 @@ const Shop = () => {
       feedBack: 10,
       price: 51,
       image: <Image 
-                source={require('../../assets/images/dumy1.png')} 
+                source={require('../../assets/images/dumy2.png')} 
                 style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
               />
     },
@@ -50,22 +51,60 @@ const Shop = () => {
       feedBack: 10,
       price: 51,
       image: <Image 
-                source={require('../../assets/images/dumy1.png')} 
+                source={require('../../assets/images/dumy2.png')} 
                 style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
               />
     },
   ])
 
+  const [slide, setSlide] = useState({
+    size: 0
+  })
+  
+  const [sortName, setSortName] = useState({
+    name: 'Price: lowest to high'
+  })
+
+  const handleShowSlide = () =>{
+    if(slide.size===0){
+      setSlide({
+        ...slide,
+        size: width*1.05
+      })
+    } else {
+      setSlide({
+        ...slide,
+        size: 0
+      })
+    }
+  }
+
+
+  const handleSortName = (name) =>{
+    setSortName({
+      ...sortName,
+      name: name
+    })
+  }
+
+  const handleBackButton = () =>{
+    props.navigation.goBack()
+  }
+
   return (
+    <>
     <View style={styles.page}>
-      <HeaderBackButton rightComponent={true} rightCompName="search" />
+      <HeaderBackButton rightComponent={true} rightCompName="search" submit={handleBackButton} />
       <View style={styles.wrapper}>
         <Text style={styles.title}>Women's tops</Text>
       </View>
       <View style={styles.filterContainer}>
         <View style={styles.wrapperFill}>
           <Filter />
-          <LowestToHigh />
+          <SortByButton 
+            submit={handleShowSlide}
+            name={sortName.name}
+          />
           <GridView />
         </View>
       </View>
@@ -88,6 +127,19 @@ const Shop = () => {
         </View>
       </ScrollView>
     </View>
+    <View style={styles.sliderContainer}>
+      <SortBy 
+        slideSize={slide.size} 
+        title='Sort By' 
+        showSlide={handleShowSlide}
+        sortName={sortName.name}
+        sortNameSubmit={handleSortName}
+      />
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#00000010'}}>
+
+      </View>
+    </View>
+    </>
   );
 };
 
@@ -111,6 +163,10 @@ const styles = StyleSheet.create({
     height: width*.15,
     backgroundColor: 'white'
   },
-  itemList:{
-  }
+  sliderContainer:{
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    bottom: 0,
+  },
 });

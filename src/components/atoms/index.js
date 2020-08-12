@@ -8,7 +8,7 @@ import CheckBox from './CheckBox';
 import Color from './Color';
 import Filter from './Filter';
 import GridView from './GridView';
-import LowestToHigh from './LowestToHigh';
+import SortByButton from './SortByButton';
 import MultipleTextField from './MultipleTextField';
 import OrderCard from './OrderCard';
 import PaymentCard from './PaymentCard';
@@ -37,7 +37,7 @@ export {
   Color,
   Filter,
   GridView,
-  LowestToHigh,
+  SortByButton,
   MultipleTextField,
   OrderCard,
   PaymentCard,
