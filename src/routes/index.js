@@ -16,6 +16,7 @@ import {
   Login,
   MyProfileSettings,
   MyBagCheckout,
+  OrderDetails,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -52,13 +53,18 @@ const TabProfile = () =>{
         component={ShippingAddres}
         options={{headerShown: false}}
       />
+      <Stack.Screen 
+        name='OrderDetails'
+        component={OrderDetails}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   )
 }
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MyBagCheckout">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
