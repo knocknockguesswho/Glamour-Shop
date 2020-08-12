@@ -19,7 +19,7 @@ export default OrderCard = ({orderNum, orderDate, trackingNum, qty, totalAmt, de
 
   const [active, setActive] = useState(false)
 
-  const handleEdit = () =>{
+  const handleCardPress = () =>{
     if(submit!==undefined){
       submit()
       setActive(!active)
@@ -33,7 +33,7 @@ export default OrderCard = ({orderNum, orderDate, trackingNum, qty, totalAmt, de
 
   return(
     <>
-      <View style={styles.cardContainer}>
+      <TouchableOpacity activeOpacity={.8} style={styles.cardContainer} onPress={handleCardPress}>
         <View style={styles.cardContent}>
           <View style={styles.topSection}>
             <Text style={styles.orderNum}>Order &#x2116;{orderNum}</Text>
@@ -57,7 +57,7 @@ export default OrderCard = ({orderNum, orderDate, trackingNum, qty, totalAmt, de
             <Text style={{color:'#2AA952'}}>{deliverStatus}</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </>
   )
 }

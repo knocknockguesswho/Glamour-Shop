@@ -13,10 +13,10 @@ import {CardHome} from '../components/molecules';
 const Home = () => {
   return (
     <View style={styles.page}>
-      <ImageBackground source={CoverHome} style={styles.background}>
-        <Text style={styles.title}>Fashion Sale</Text>
-      </ImageBackground>
       <ScrollView showsVerticalScrollIndicator={false}>
+        <ImageBackground source={CoverHome} style={styles.background}>
+          <Text style={styles.title}>Fashion Sale</Text>
+        </ImageBackground>
         <View style={styles.contentText}>
           <View>
             <Text style={styles.contentTitle}>New</Text>
