@@ -69,6 +69,25 @@ const Filter = (props) => {
 
   }
 
+  const handleFilterButton = (name) => {
+    setSortByButton([...sortByButton].map(obj =>{
+      if(obj.name===name){
+        return{
+          ...obj,
+          active: true
+        }
+      } else{
+        return{
+          ...obj,
+          active: false
+        }
+      }
+    }))
+    if(sortName!==name&&sortName!==''){
+      sortNameSubmit(name)
+    }
+  };
+
   handleBackButton = () => {
     props.navigation.goBack();
   };
