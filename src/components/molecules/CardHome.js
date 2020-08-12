@@ -2,18 +2,21 @@ import React from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import {CardHomeItem} from '../atoms';
 
-const CardHome = () => {
+const CardHome = (props) => {
   return (
     <ScrollView
       horizontal
       showsHorizontalScrollIndicator={false}
       style={styles.container}>
-      <CardHomeItem
-        onPress={() => alert('Image 1')}
-        img={require('../../../assets/images/dumy1.png')}
-      />
-      {/* <CardHomeItem img={require('../../../assets/images/dumy2.png')} />
-      <CardHomeItem img={require('../../../assets/images/dumy1.png')} /> */}
+      {props.products.map((product) => {
+        return (
+          <CardHomeItem
+            key={product.id}
+            onPress={() => alert(`${product.id}`)}
+            source={product.image}
+          />
+        );
+      })}
     </ScrollView>
   );
 };

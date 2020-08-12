@@ -11,19 +11,28 @@ import {Label} from '../components/atoms';
 import {CardHome} from '../components/molecules';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {getAllProducts} from '../redux/actions/products';
 
-const Home = () => {
-  const [newest, setNewest] = useState([
-    {
-      id: 1,
-      image: `https://i.pinimg.com/originals/9f/4a/e2/9f4ae27f629991c1f0ff0db2fe2aad91.jpg`,
-    },
-    {
-      id: 2,
-      image: `https://sc01.alicdn.com/kf/HTB1bx55QXXXXXXZaXXXq6xXFXXXT/225696021/HTB1bx55QXXXXXXZaXXXq6xXFXXXT.jpg`,
-    },
-  ]);
+const Home = (props) => {
+  const [newest, setNewest] = useState([]);
+
+  const getAllProducts = async () => {
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXN1bHQiOlt7ImlkIjoxNywiZW1haWwiOiJkaW1hc2RvbXBpdEBnbWFpbC5jb20iLCJuYW1lIjoiRGltYXMgTW9rb2RvbXBpdCAyIiwicm9sZSI6MSwiY3JlYXRlZF9hdCI6IjIwMjAtMDgtMTFUMDM6NTQ6MDguMDAwWiIsInVwZGF0ZWRfYXQiOiIyMDIwLTA4LTExVDAzOjU0OjA4LjAwMFoifV0sImlhdCI6MTU5NzI2NDkxMiwiZXhwIjoxNTk3MzUxMzEyfQ.NfzdedR7w0UqnWv6hP47O7fYi4U4747fiQ8CSR5cp9U';
+
+    await props
+      .getAllProducts(token)
+      .then((response) => {
+        console.log(response);
+        setNewest(response.value.data.data);
+      })
+      .catch((error) => console.log(error.response));
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <View style={styles.page}>
@@ -41,14 +50,12 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
-          <CardHome />
+          <CardHome products={newest} />
         </View>
       </ScrollView>
     </View>
   );
 };
-
-export default Home;
 
 const styles = StyleSheet.create({
   page: {flex: 1, backgroundColor: 'white'},
@@ -74,3 +81,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  products: state.products,
+});
+
+const mapDispatchToProps = {getAllProducts};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
