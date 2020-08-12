@@ -16,6 +16,7 @@ export class Bag extends Component {
           color: 'Gray',
           size: 'L',
           price: 100,
+          stock: 10,
           qty: 1,
         },
         {
@@ -25,6 +26,7 @@ export class Bag extends Component {
           color: 'Black',
           size: 'XL',
           price: 80,
+          stock: 10,
           qty: 1,
         },
         {
@@ -34,6 +36,7 @@ export class Bag extends Component {
           color: 'White',
           size: 'M',
           price: 150,
+          stock: 10,
           qty: 1,
         },
       ],
@@ -44,17 +47,16 @@ export class Bag extends Component {
     console.log('Search on press');
   };
 
-  handleMinus = (price) => {
-    this.setState({
-      price: this.state.price - price,
-      qty: this.state.qty - 1,
-    });
+  handleMinus = (id) => {
+    let bags = [...this.state.bags];
+    bags[id - 1].qty = bags[id - 1].qty - 1;
+    this.setState({bags: bags});
   };
 
-  handlePlus = () => {
-    this.setState({
-      qty: 3,
-    });
+  handlePlus = (id) => {
+    let bags = [...this.state.bags];
+    bags[id - 1].qty = bags[id - 1].qty + 1;
+    this.setState({bags: bags});
   };
 
   render() {
@@ -80,8 +82,10 @@ export class Bag extends Component {
                   size={bag.size}
                   qty={bag.qty}
                   price={bag.price}
-                  minus={this.handleMinus}
-                  plus={() => console.log(`ORDER ID = ${bag.id}`)}
+                  minus={bag.qty > 1 ? () => this.handleMinus(bag.id) : null}
+                  plus={
+                    bag.qty < bag.stock ? () => this.handlePlus(bag.id) : null
+                  }
                 />
               );
             })}
