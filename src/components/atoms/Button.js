@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: withIconLeft? 'row': 'column',
     borderRadius: 100,
-    elevation: 3
+    elevation: 3,
   }),
   buttonOutline: (big, withIconLeft)=>({
     height: big? width*.11 : width*.09,
