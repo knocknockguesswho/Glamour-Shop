@@ -2,6 +2,7 @@ import AddressCard from './AddressCard';
 import Button from './Button';
 import ButtonRounded from './ButtonRounded';
 import ButtonWithArrow from './ButtonWithArrow';
+import CardWithLeftImage from './CardWithLeftImage';
 import CategoryCard from './CategoryCard';
 import CheckBox from './CheckBox';
 import Color from './Color';
@@ -29,6 +30,7 @@ export {
   Button,
   ButtonRounded,
   ButtonWithArrow,
+  CardWithLeftImage,
   CategoryCard,
   CheckBox,
   Color,
