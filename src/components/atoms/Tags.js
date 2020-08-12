@@ -60,16 +60,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    borderRadius: 10
+    borderRadius: 10,
+    alignSelf: 'stretch'
   }),
   buttonSmall: (active) =>({
-    height: width*.07,
-    width: width*.2,
-    backgroundColor: active? '#222' : 'transparent',
+    height: width*.09,
+    width: width*.09,
+    borderWidth: active? 0 : width*.001,
+    borderColor: '#22222280',
+    backgroundColor: active? '#DB3022' : '#fff',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
-    borderRadius: 100,
+    borderRadius: 10,
+    alignSelf: 'stretch'
   }),
   buttonPrimaryText: (active) => ({
     color: active? 'white' : '#222',
@@ -81,6 +85,6 @@ const styles = StyleSheet.create({
     color: active? 'white' : '#222',
     fontWeight: '700',
     fontSize: 10,
-    marginRight: width*.01
+    marginRight: width*.01,
   })
 })

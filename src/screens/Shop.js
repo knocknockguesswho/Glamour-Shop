@@ -87,6 +87,10 @@ const Shop = (props) => {
     })
   }
 
+  const handleGoToFilter = () =>{
+    props.navigation.push('Filter')
+  }
+
   const handleBackButton = () =>{
     props.navigation.goBack()
   }
@@ -100,7 +104,7 @@ const Shop = (props) => {
       </View>
       <View style={styles.filterContainer}>
         <View style={styles.wrapperFill}>
-          <Filter />
+          <Filter submit={handleGoToFilter}/>
           <SortByButton 
             submit={handleShowSlide}
             name={sortName.name}
