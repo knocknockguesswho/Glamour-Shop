@@ -15,6 +15,7 @@ import Profile from './Profile';
 import Login from './Login';
 import Search from './Search';
 import Filter from './Filter';
+import ProductCard from './ProductCard';
 
 export {
   AddShippingAddress,
@@ -34,4 +35,5 @@ export {
   Profile,
   Search,
   Filter,
+  ProductCard,
 };

@@ -19,6 +19,7 @@ import {
   OrderDetails,
   Search,
   Filter,
+  ProductCard,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -55,8 +56,8 @@ const TabProfile = () => {
         component={ShippingAddres}
         options={{headerShown: false}}
       />
-      <Stack.Screen 
-        name='OrderDetails'
+      <Stack.Screen
+        name="OrderDetails"
         component={OrderDetails}
         options={{headerShown: false}}
       />
@@ -66,7 +67,7 @@ const TabProfile = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="ProductCard">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -115,6 +116,11 @@ const App = () => {
       <Stack.Screen
         name="Filter"
         component={Filter}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProductCard"
+        component={ProductCard}
         options={{headerShown: false}}
       />
       <Stack.Screen
