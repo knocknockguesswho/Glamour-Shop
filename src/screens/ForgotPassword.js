@@ -12,34 +12,23 @@ import {
 import {FormSignup, HeaderBackButton} from '../components/molecules';
 
 import {Button} from '../components/atoms';
+import {Forgot} from '../redux/actions/auth';
 import {connect} from 'react-redux';
-import {Register} from '../redux/actions/auth';
 
-class Signup extends Component {
-  constructor() {
-    super();
+export class ForgotPassword extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       formGroup: [
-        {
-          placeholder: 'Name',
-          value: '',
-          type: 'none',
-          secure: false,
-        },
         {
           placeholder: 'Email',
           value: '',
           type: 'emailAddress',
           secure: false,
         },
-        {
-          placeholder: 'Password',
-          value: '',
-          type: 'password',
-          secure: true,
-        },
       ],
     };
+    console.log(this.props);
   }
 
   getData = (param, param2) => {
@@ -52,20 +41,19 @@ class Signup extends Component {
     }));
   };
 
-  handleSignUp = async () => {
+  handleLogin = async () => {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
     const data = {
-      name: formGroup[0].value,
-      email: formGroup[1].value,
-      password: formGroup[2].value,
+      email: formGroup[0].value,
     };
-    await dispatch(Register(data))
+
+    console.log(data)
+
+    await dispatch(Forgot(data))
       .then((res) => {
-        Alert.alert(
-          'Register Success, Check your email for get activation code',
-        );
-        navigation.replace('Verification');
+        Alert.alert('Check Your Email to reset password');
+        navigation.replace('Login');
       })
       .catch((err) => {
         Alert.alert(err.response.data.data);
@@ -77,34 +65,32 @@ class Signup extends Component {
     const {navigation} = this.props;
     return (
       <View style={styles.mainContainer}>
-        <HeaderBackButton submit={this.handleBackButton} />
+        <HeaderBackButton submit={() => navigation.navigate('Signup')} />
         <View style={styles.formGroup}>
           <FormSignup
-            title="Sign Up"
-            link="Already have an account?"
+            title="Forgot Password"
+            link={null}
             formGroup={this.state.formGroup}
             submit={this.getData}
-            onPress={() => navigation.navigate('Login')}
           />
         </View>
         <View>
           <Button
-            title="SIGN UP"
+            title="Reset Password"
             big={true}
             type="primary"
-            submit={() => {
-              this.handleSignUp();
-            }}
+            submit={() => this.handleLogin()}
           />
         </View>
       </View>
     );
   }
 }
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps)(Signup);
+export default connect(mapStateToProps)(ForgotPassword);
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
