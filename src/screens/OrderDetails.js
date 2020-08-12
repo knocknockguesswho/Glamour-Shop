@@ -10,7 +10,6 @@ import {
   ScrollView
 } from 'react-native';
 
-import Mastercard from '../../assets/images/mastercard.png'
 
 import {
   HeaderBackButton,
@@ -22,46 +21,21 @@ import {
 } from '../components/atoms';
 
 class OrderDetails extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       search: '',
-      addresses: [
-        {
-          name:'Jane Doe',
-          address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-        },
-      ],
-      paymentList: [
-        {
-          paymentName: 'Mastercard',
-          paymentImgSrc: <Image source={require('../../assets/images/mastercard.png')} style={{width: width*.1, height: width*.1, resizeMode: 'center'}} />,
-          choose: false
-        },
-        {
-          paymentName: 'Pos Indonesia',
-          paymentImgSrc: <Image source={require('../../assets/images/posindonesia.png')} style={{width: width*.1, height: width*.1, resizeMode: 'center'}} />,
-          choose: false
-        },
-        {
-          paymentName: 'Go Pay',
-          paymentImgSrc: <Image source={require('../../assets/images/gopay.png')} style={{width: width*.1, height: width*.1, resizeMode: 'center'}} />,
-          choose: false
-        },
-      ]
+      order:{
+        orderNum: this.props.route.params.orderNum,
+        orderDate: this.props.route.params.orderDate,
+        trackingNum: this.props.route.params.trackingNum,
+        deliverStatus: this.props.route.params.deliverStatus,
+      }
     }
   }
 
   handleBackButton = () =>{
     this.props.navigation.goBack();
-  }
-
-  handleGoToChangeAddress = () =>{
-    this.props.navigation.push('ChangeAddress')
-  }
-
-  handleSubmitOrder = () =>{
-    console.log('Pressed')
   }
 
 
@@ -72,13 +46,22 @@ class OrderDetails extends Component {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.mainContainer}>
           <View style={styles.orderNumContainer}>
-            <View style={{width: width*.9, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text></Text>
-              <Text></Text>
+            <View style={{width: width*.9, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginBottom: width*.02}}>
+              <Text style={{color: '#222222', fontWeight: '700'}}>Order &#x2116;{this.state.order.orderNum}</Text>
+              <Text style={{color: '#22222295'}}>{this.state.order.orderDate}</Text>
             </View>
-            <View style={{width: width*.9, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between'}}>
-              <Text></Text>
-              <Text></Text>
+            <View style={{width: width*.9, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginBottom: width*.02}}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={{color: '#22222295'}}>Tracking number: </Text>
+                <Text style={{color: '#222222', fontWeight: '700'}}>{this.state.order.trackingNum}</Text>
+              </View>
+              <Text style={{color: '#2AA952'}}>{this.state.order.deliverStatus}</Text>
+            </View>
+          </View>
+          <View style={styles.cardItems}>
+            <Text>3 Items</Text>
+            <View style={styles.cardsContainer}>
+
             </View>
           </View>
         </View>
@@ -99,6 +82,15 @@ const styles = StyleSheet.create({
     marginBottom: width*.04,
     marginTop: width*.04
   },
+  cardItems:{
+    width: width*.9,
+    alignSelf: 'center'
+  },
+  cardsContainer:{
+    height: width*.6,
+    backgroundColor: 'yellow',
+    marginTop: width*.02
+  }
 })
 
 export default OrderDetails;
