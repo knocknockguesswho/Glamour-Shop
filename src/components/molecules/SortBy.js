@@ -9,17 +9,58 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import {
-  Button,
-  TextFieldMedium
-} from '../atoms';
 
-export default SortBy = ({title, slideSize, showSlide}) =>{
+export default SortBy = ({title, slideSize, showSlide, sortName, sortNameSubmit}) =>{
 
   const [position, setPosition] = useState({
     top: width*.95,
-    bottom: slideSize
+    bottom: slideSize,
+    buttonName: ''
   });
+
+  const [sortByButton, setSortByButton] = useState([
+    {
+      name: 'Popular',
+      active: false
+    },
+    {
+      name: 'Newest',
+      active: false
+    },
+    {
+      name: 'Customer review',
+      active: false
+    },
+    {
+      name: 'Price: lowest to high',
+      active: true
+    },
+    {
+      name: 'Price: highest to low',
+      active: false
+    },
+  ])
+
+  const handleSortByButton = (name) => {
+    setSortByButton([...sortByButton].map(obj =>{
+      if(obj.name===name){
+        return{
+          ...obj,
+          active: true
+        }
+      } else{
+        return{
+          ...obj,
+          active: false
+        }
+      }
+
+      
+    }))
+    if(sortName!==name&&sortName!==''){
+      sortNameSubmit(name)
+    }
+  };
 
   const draggedValue = new Animated.Value(slideSize || position.bottom);
   const ModalRef = useRef(null);
@@ -39,14 +80,14 @@ export default SortBy = ({title, slideSize, showSlide}) =>{
             <TouchableOpacity onPress={showSlide} activeOpacity={1} style={styles.sheetHandle}></TouchableOpacity>
             <Text style={styles.sliderTitle}>{title}</Text>
             <View style={styles.sliderMain}>
-              <TextFieldMedium placeholder='Old Password' value='' type='none' secure={true} submit={()=>console.log('test submit oldpass')} />
-              <TouchableOpacity activeOpacity={.8} style={styles.forgotPasswordButton}>
-                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-              </TouchableOpacity>
-              <TextFieldMedium placeholder='New Password' value='' type='none' secure={true} submit={()=>console.log('test submit newpass')} />
-              <TextFieldMedium placeholder='Repeat New Password' value='' type='none' secure={true} submit={()=>console.log('test submit newpass')} />
+              {sortByButton.map((button, index)=>{
+                return(
+                  <TouchableOpacity activeOpacity={.9} onPress={()=>handleSortByButton(button.name)} style={styles.sortButton(button.active)}>
+                    <Text style={styles.buttonTitle(button.active)}>{button.name}</Text>
+                  </TouchableOpacity>
+                )
+              })}
             </View>
-            <Button title='Save Password' type='primary' big={true} submit={()=>console.log('test')} />
           </View>
         </SlidingUpPanel>
       </View>
@@ -100,5 +141,17 @@ const styles = StyleSheet.create({
   forgotPasswordText:{
     fontSize: 10,
     color: '#22222280'
-  }
+  },
+  sortButton:(active) =>({
+    width: width,
+    paddingVertical: width*.04,
+    paddingHorizontal: width*.04,
+    backgroundColor: active? '#DB3022' : 'transparent',
+    marginTop: width*.02
+  }),
+  buttonTitle:(active) =>({
+    color: active? 'white' : '#222',
+    fontWeight: '600',
+    fontSize: width*.035
+  })
 })

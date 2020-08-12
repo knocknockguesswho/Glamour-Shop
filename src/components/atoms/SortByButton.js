@@ -13,7 +13,7 @@ import FilterIcon from '../../../assets/images/up-and-down-arrow.svg';
 submit? submit(function())
 */
 
-export default LowestToHigh = ({submit}) =>{
+export default SortByButton = ({submit, name}) =>{
 
   const [active, setActive] = useState(false)
 
@@ -37,7 +37,7 @@ export default LowestToHigh = ({submit}) =>{
             height={20}
           />
         </View>
-        <Text style={styles.iconTitle}>Price: lowest to high</Text>
+        <Text style={styles.iconTitle}>{name}</Text>
       </TouchableOpacity>
     </>
   )
