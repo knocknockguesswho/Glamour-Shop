@@ -51,9 +51,9 @@ class Signup extends Component {
     }))
   };
   
-  handleBackButton = () => {
-    console.log('Go Back');
-  };
+  // handleBackButton = () => {
+  //   this.props.navigation.goBack()
+  // };
   
   render() {
 
@@ -78,7 +78,7 @@ class Signup extends Component {
             title="SIGN UP"
             big={true}
             type="primary"
-            submit={()=>this.handleSignup('Name', 'Test')}
+            submit={()=>console.log('test')}
           />
         </View>
       </View>
