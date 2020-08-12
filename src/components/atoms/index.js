@@ -22,6 +22,7 @@ import BottomNavigator from './BottomNavigator';
 import TabItem from './TabItem';
 import Label from './Label';
 import CardHomeItem from './CardHomeItem';
+import Gap from './Gap';
 
 export {
   AddressCard,
@@ -48,4 +49,5 @@ export {
   TabItem,
   Label,
   CardHomeItem,
+  Gap,
 };

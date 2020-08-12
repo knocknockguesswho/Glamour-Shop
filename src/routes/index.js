@@ -17,6 +17,7 @@ import {
   MyProfileSettings,
   MyBagCheckout,
   Search,
+  Filter,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -103,6 +104,11 @@ const App = () => {
       <Stack.Screen
         name="Search"
         component={Search}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Filter"
+        component={Filter}
         options={{headerShown: false}}
       />
       <Stack.Screen
