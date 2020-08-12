@@ -47,10 +47,6 @@ export class Login extends Component {
     }));
   };
 
-<<<<<<< HEAD
-  handleBackButton = () => {
-    this.props.navigation.goBack()
-=======
   handleLogin = async () => {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
@@ -68,7 +64,6 @@ export class Login extends Component {
         Alert.alert(err.response.data.data);
         console.log(err.response.data);
       });
->>>>>>> 68f4551644657494a33b6028c10aab2a3d5f5206
   };
 
   render() {
