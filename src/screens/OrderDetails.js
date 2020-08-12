@@ -105,6 +105,7 @@ class OrderDetails extends Component {
               {this.state.items.map((item, index)=>{
                 return(
                   <CardWithLeftImageList
+                    key={index}
                     sourceImg={item.image}
                     itemName={item.name}
                     itemColor={item.color}
@@ -112,6 +113,7 @@ class OrderDetails extends Component {
                     itemPrice={item.price}
                     itemSize={item.size}
                     itemUnits={item.units}
+                    type='order-details'
                   />
                 )
               })}

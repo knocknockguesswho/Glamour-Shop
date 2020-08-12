@@ -24,6 +24,7 @@ import TabItem from './TabItem';
 import Label from './Label';
 import CardHomeItem from './CardHomeItem';
 import Gap from './Gap';
+import Star from './Star';
 
 export {
   AddressCard,
@@ -52,4 +53,5 @@ export {
   Label,
   CardHomeItem,
   Gap,
+  Star
 };

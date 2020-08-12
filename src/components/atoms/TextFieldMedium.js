@@ -24,6 +24,7 @@ submit? submit(function())
 
 export default TextFieldMedium = ({placeholder, value, type, secure, submit, check, withArrow}) =>{
 
+
   const [input, setInput] = useState({
     value: value,
     isError: false,
@@ -31,9 +32,12 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit, che
     doneSubmitting: false
   })
 
+
+
   const handleSubmitEditing = () =>{
+    setInput({...input, isTyping: false, doneSubmitting: true})
     if(submit!==undefined){
-      submit()
+      submit(placeholder, input.value)
     } else{
       console.log(`variable 'submit' expecting function`)
     }
@@ -44,7 +48,9 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit, che
       <View style={styles.container(input.isError)}>
         <Text style={styles.formLabel(input.isError, input.isTyping, input.doneSubmitting, input.value)}>{input.isTyping&&input.doneSubmitting||input.value!==''? placeholder : ''}</Text>
         <View style={styles.formContainer(input.isError)}>
-          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: false, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
+
+          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={()=>handleSubmitEditing()} onChangeText={(value)=>setInput({value: value})} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
+
             {input.value!==''&&check==true?
               <View style={styles.validation}>
                 <Icon 

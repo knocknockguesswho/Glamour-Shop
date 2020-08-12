@@ -10,7 +10,10 @@ import {
 
 import {ButtonWithArrow, TextFieldMedium} from '../atoms';
 
-export default FormSignup = ({title, formGroup, link}) => {
+export default FormSignup = ({title, formGroup, link, submit}) => {
+
+  const [input, setInput] = useState({})
+
   return (
     <>
       <View style={styles.mainContainer}>
@@ -25,7 +28,7 @@ export default FormSignup = ({title, formGroup, link}) => {
                 type={form.type}
                 secure={form.secure}
                 check={true}
-                submit={() => console.log('Test Form')}
+                submit={submit}
               />
             );
           })}

@@ -13,7 +13,7 @@ import {
 } from '../atoms'
 
 
-export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemColor, itemSize, itemUnits, itemPrice,}) =>{
+export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemColor, itemSize, itemUnits, itemPrice, itemRating, itemFeedback, type}) =>{
 
   const [content, setContent] = useState({
     itemName,
@@ -21,7 +21,9 @@ export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemCo
     itemColor,
     itemSize,
     itemUnits,
-    itemPrice
+    itemPrice,
+    itemRating,
+    itemFeedback
   })
 
   return(
@@ -31,6 +33,7 @@ export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemCo
             <CardWithLeftImage
               sourceImg={sourceImg}
               content={content}
+              type={type}
             />
         </View>
       </View>
