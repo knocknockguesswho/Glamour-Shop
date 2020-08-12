@@ -59,8 +59,8 @@ class Signup extends Component {
 
     //panggil per-index
     console.log(this.state.formGroup[0].value)
-    console.log(this.state.formGroup[1].value)
-    console.log(this.state.formGroup[2].value)
+    // console.log(this.state.formGroup[1].value)
+    // console.log(this.state.formGroup[2].value)
     ///
     return (
       <View style={styles.mainContainer}>
