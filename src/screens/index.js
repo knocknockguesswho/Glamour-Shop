@@ -12,6 +12,7 @@ import Shop from './Shop';
 import Bag from './Bag';
 import Profile from './Profile';
 import Login from './Login';
+import Search from './Search';
 
 export {
   AddShippingAddress,
@@ -28,4 +29,5 @@ export {
   Shop,
   Bag,
   Profile,
+  Search,
 };
