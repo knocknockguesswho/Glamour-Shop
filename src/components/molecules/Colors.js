@@ -57,7 +57,6 @@ export default Colors = () =>{
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   mainContainer:{
-    height: height/1.15,
     width: width*.95,
     flexDirection: 'row',
     justifyContent: 'space-around',
