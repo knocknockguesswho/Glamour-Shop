@@ -55,8 +55,8 @@ const TabProfile = () => {
         component={ShippingAddres}
         options={{headerShown: false}}
       />
-      <Stack.Screen 
-        name='OrderDetails'
+      <Stack.Screen
+        name="OrderDetails"
         component={OrderDetails}
         options={{headerShown: false}}
       />
@@ -66,7 +66,7 @@ const TabProfile = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Signup">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
