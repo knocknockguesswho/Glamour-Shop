@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   ImageBackground,
   StyleSheet,
@@ -11,7 +11,20 @@ import {Label} from '../components/atoms';
 import {CardHome} from '../components/molecules';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
+import axios from 'axios';
+
 const Home = () => {
+  const [newest, setNewest] = useState([
+    {
+      id: 1,
+      image: `https://i.pinimg.com/originals/9f/4a/e2/9f4ae27f629991c1f0ff0db2fe2aad91.jpg`,
+    },
+    {
+      id: 2,
+      image: `https://sc01.alicdn.com/kf/HTB1bx55QXXXXXXZaXXXq6xXFXXXT/225696021/HTB1bx55QXXXXXXZaXXXq6xXFXXXT.jpg`,
+    },
+  ]);
+
   return (
     <View style={styles.page}>
       <ScrollView showsVerticalScrollIndicator={false}>
