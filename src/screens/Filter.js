@@ -4,9 +4,16 @@ import {HeaderBackButton} from '../components/molecules';
 import {Button, Gap} from '../components/atoms';
 
 const Filter = () => {
+  handleBackButton = () => {
+    this.props.navigation.goBack();
+  };
   return (
     <View style={styles.page}>
-      <HeaderBackButton />
+      <HeaderBackButton
+        midCompTitle="Filters"
+        middleComponent={true}
+        submit={handleBackButton}
+      />
       <View style={styles.container}>
         <Text style={styles.title}>Colors</Text>
       </View>

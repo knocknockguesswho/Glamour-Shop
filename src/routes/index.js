@@ -16,6 +16,7 @@ import {
   Login,
   MyProfileSettings,
   MyBagCheckout,
+  OrderDetails,
   Search,
   Filter,
 } from '../screens';
@@ -54,13 +55,18 @@ const TabProfile = () => {
         component={ShippingAddres}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="OrderDetails"
+        component={OrderDetails}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Search">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}

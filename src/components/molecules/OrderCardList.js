@@ -12,7 +12,7 @@ import {
   OrderCard
 } from '../atoms';
 
-export default OrderCardList = ({listData}) =>{
+export default OrderCardList = ({listData, submit}) =>{
 
   return(
     <>
@@ -28,7 +28,7 @@ export default OrderCardList = ({listData}) =>{
                 qty={data.qty}
                 deliverStatus={data.deliverStatus}
                 totalAmt={data.totalAmt}
-                submit={data.submit}
+                submit={submit}
               />
             )
           })}
