@@ -1,42 +1,39 @@
-import React, { Component } from 'react'
-import { 
+import React, {Component} from 'react';
+import {
   Text,
   View,
   Dimensions,
   StyleSheet,
-  TouchableOpacity
-} from 'react-native'
-
+  TouchableOpacity,
+} from 'react-native';
 
 import {
   HeaderBackButton,
   PasswordChange,
-  ToggleOnOffWithTitle
+  ToggleOnOffWithTitle,
 } from '../components/molecules';
 
-import {
-  TextFieldMedium
-} from '../components/atoms'
+import {TextFieldMedium} from '../components/atoms';
 
 //on 'Change' button pressed, show  PasswordChange slidinguppanel
 
 export class MyProfileSettings extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       slideSize: 0,
-      notification:[
+      notification: [
         {
           title: 'Sales',
-          toggleActive: true
+          toggleActive: true,
         },
         {
           title: 'New Arrivals',
-          toggleActive: false
+          toggleActive: false,
         },
         {
           title: 'Delivery Status Changes',
-          toggleActive: false
+          toggleActive: false,
         },
       ],
       personalInformation: [
@@ -50,7 +47,7 @@ export class MyProfileSettings extends Component {
           placeholder: 'Date of Birth',
           value: '',
           type: 'none',
-          secure: false
+          secure: false,
         },
       ],
       password: [
@@ -58,40 +55,45 @@ export class MyProfileSettings extends Component {
           placeholder: 'Password',
           value: '',
           type: 'password',
-          secure: true
-        }
-      ]
-    }
+          secure: true,
+        },
+      ],
+    };
   }
 
-  handleShowSlide = () =>{
-    if(this.state.slideSize===0){
+  handleShowSlide = () => {
+    if (this.state.slideSize === 0) {
       this.setState({
         ...this.state,
-        slideSize: width*1.05
-      })
+        slideSize: width * 1.05,
+      });
     } else {
       this.setState({
         ...this.state,
-        slideSize: 0
-      })
+        slideSize: 0,
+      });
     }
-  }
+  };
 
-  handleGoBack = () =>{
-    this.props.navigation.goBack()
-  }
-  
+  handleGoBack = () => {
+    this.props.navigation.goBack();
+  };
+
   render() {
     return (
       <>
         <View style={styles.container}>
-          <HeaderBackButton rightComponent={true} backgroundColor='#F9F9F9' rightCompName='search' submit={this.handleGoBack}/>
+          <HeaderBackButton
+            rightComponent={true}
+            backgroundColor="#F9F9F9"
+            rightCompName="search"
+            submit={this.handleGoBack}
+          />
           <Text style={styles.screenTitle}>Settings</Text>
           <View style={styles.mainContent}>
             <Text style={styles.formTitle}>Personal Information</Text>
-            {this.state.personalInformation.map((data, index)=>{
-              return(
+            {this.state.personalInformation.map((data, index) => {
+              return (
                 <View key={index} style={styles.formGroup}>
                   <TextFieldMedium
                     placeholder={data.placeholder}
@@ -101,16 +103,26 @@ export class MyProfileSettings extends Component {
                     check={false}
                   />
                 </View>
-              )
+              );
             })}
-            <View style={{width: width*.9, flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center'}}>
+            <View
+              style={{
+                width: width * 0.9,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignSelf: 'center',
+              }}>
               <Text style={styles.formTitle}>Password</Text>
-              <TouchableOpacity onPress={this.handleShowSlide} style={{justifyContent: 'center'}}>
-                <Text style={{fontSize: width*.03, color: '#22222280'}}>Change</Text>
+              <TouchableOpacity
+                onPress={this.handleShowSlide}
+                style={{justifyContent: 'center'}}>
+                <Text style={{fontSize: width * 0.03, color: '#22222280'}}>
+                  Change
+                </Text>
               </TouchableOpacity>
             </View>
-            {this.state.password.map((data, index)=>{
-              return(
+            {this.state.password.map((data, index) => {
+              return (
                 <View key={index} style={styles.formGroup}>
                   <TextFieldMedium
                     placeholder={data.placeholder}
@@ -120,85 +132,90 @@ export class MyProfileSettings extends Component {
                     check={false}
                   />
                 </View>
-              )
+              );
             })}
-            
+
             <View style={styles.toggleContainer}>
-            <Text style={styles.toggleSectionTitle}>Notifications</Text>
-              {this.state.notification.map((data, index)=>{
-                return(
-                  <ToggleOnOffWithTitle 
+              <Text style={styles.toggleSectionTitle}>Notifications</Text>
+              {this.state.notification.map((data, index) => {
+                return (
+                  <ToggleOnOffWithTitle
                     key={index}
                     title={data.title}
                     toggleActive={data.toggleActive}
                   />
-                )
+                );
               })}
             </View>
           </View>
         </View>
-        
-          <View style={styles.sliderContainer}>
-            <PasswordChange 
-              slideSize={this.state.slideSize} 
-              title='Password Change' 
-              showSlide={this.handleShowSlide} 
-            />
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#00000010'}}>
 
-            </View>
-          </View>
+        <View style={styles.sliderContainer}>
+          <PasswordChange
+            slideSize={this.state.slideSize}
+            title="Password Change"
+            showSlide={this.handleShowSlide}
+          />
+          <View
+            style={{
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: '#00000010',
+            }}></View>
+        </View>
       </>
-    )
+    );
   }
 }
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
-  container:{
+  container: {
     height: height,
     width: width,
-    backgroundColor: '#F9F9F9'
+    backgroundColor: '#F9F9F9',
   },
-  screenTitle:{
-    width: width*.9,
+  screenTitle: {
+    width: width * 0.9,
     color: '#222',
     fontWeight: '700',
     fontSize: 34,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
-  sliderContainer:{
+  sliderContainer: {
     position: 'absolute',
     right: 0,
     left: 0,
     bottom: 0,
+    paddingBottom: 50,
   },
-  mainContent:{
+  mainContent: {
     width: width,
   },
-  formTitle:{
+  formTitle: {
     width: '90%',
     fontWeight: '700',
-    letterSpacing: width*.002,
+    letterSpacing: width * 0.002,
     alignSelf: 'center',
-    marginBottom: width*.04,
-    marginTop: width*.04
+    marginBottom: width * 0.04,
+    marginTop: width * 0.04,
   },
-  formGroup:{
+  formGroup: {
     width: width,
-    alignItems: 'center'
+    alignItems: 'center',
   },
-  toggleContainer:{
-    alignSelf: 'center'
-  },
-  toggleSectionTitle:{
-    fontSize: width*.04,
-    fontWeight: '700',
-    width: width*.9,
+  toggleContainer: {
     alignSelf: 'center',
-    marginTop: width*.1,
-    marginBottom: width*.05
-  }
-})
+  },
+  toggleSectionTitle: {
+    fontSize: width * 0.04,
+    fontWeight: '700',
+    width: width * 0.9,
+    alignSelf: 'center',
+    marginTop: width * 0.1,
+    marginBottom: width * 0.05,
+  },
+});
 
-export default MyProfileSettings
+export default MyProfileSettings;
