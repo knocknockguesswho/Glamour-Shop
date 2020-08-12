@@ -38,7 +38,7 @@ export class Login extends Component {
   };
 
   handleBackButton = () => {
-    console.log('Go Back');
+    this.props.navigation.goBack()
   };
 
   render() {

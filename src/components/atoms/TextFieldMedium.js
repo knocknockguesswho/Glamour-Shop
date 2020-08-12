@@ -49,7 +49,7 @@ export default TextFieldMedium = ({placeholder, value, type, secure, submit, che
         <Text style={styles.formLabel(input.isError, input.isTyping, input.doneSubmitting, input.value)}>{input.isTyping&&input.doneSubmitting||input.value!==''? placeholder : ''}</Text>
         <View style={styles.formContainer(input.isError)}>
 
-          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={()=>handleBlur()} onChangeText={(value)=>handleSubmitEditing(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)} onSubmitEditing={handleSubmitEditing} />
+          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={()=>handleBlur()} onChangeText={(value)=>handleSubmitEditing(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)}  />
 
             {input.value!==''&&check==true?
               <View style={styles.validation}>
