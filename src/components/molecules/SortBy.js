@@ -9,16 +9,13 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import {
-  Button,
-  TextFieldMedium
-} from '../atoms';
 
-export default SortBy = ({title, slideSize, showSlide}) =>{
+export default SortBy = ({title, slideSize, showSlide, sortName, sortNameSubmit}) =>{
 
   const [position, setPosition] = useState({
     top: width*.95,
-    bottom: slideSize
+    bottom: slideSize,
+    buttonName: ''
   });
 
   const [sortByButton, setSortByButton] = useState([
@@ -36,7 +33,7 @@ export default SortBy = ({title, slideSize, showSlide}) =>{
     },
     {
       name: 'Price: lowest to high',
-      active: false
+      active: true
     },
     {
       name: 'Price: highest to low',
@@ -57,7 +54,12 @@ export default SortBy = ({title, slideSize, showSlide}) =>{
           active: false
         }
       }
+
+      
     }))
+    if(sortName!==name&&sortName!==''){
+      sortNameSubmit(name)
+    }
   };
 
   const draggedValue = new Animated.Value(slideSize || position.bottom);

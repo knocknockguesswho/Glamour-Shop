@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, View, Dimensions, ScrollView, Image} from 'react-native';
 import {HeaderBackButton} from '../components/molecules';
-import {Filter, GridView, LowestToHigh} from '../components/atoms';
+import {Filter, GridView, SortByButton} from '../components/atoms';
 
 import {
   CardWithLeftImageList,
   SortBy
 } from '../components/molecules'
 
-const Shop = () => {
+const Shop = (props) => {
 
   const [items, setItems] = useState([
     {
@@ -60,6 +60,10 @@ const Shop = () => {
   const [slide, setSlide] = useState({
     size: 0
   })
+  
+  const [sortName, setSortName] = useState({
+    name: 'Price: lowest to high'
+  })
 
   const handleShowSlide = () =>{
     if(slide.size===0){
@@ -75,18 +79,31 @@ const Shop = () => {
     }
   }
 
+
+  const handleSortName = (name) =>{
+    setSortName({
+      ...sortName,
+      name: name
+    })
+  }
+
+  const handleBackButton = () =>{
+    props.navigation.goBack()
+  }
+
   return (
     <>
     <View style={styles.page}>
-      <HeaderBackButton rightComponent={true} rightCompName="search" />
+      <HeaderBackButton rightComponent={true} rightCompName="search" submit={handleBackButton} />
       <View style={styles.wrapper}>
         <Text style={styles.title}>Women's tops</Text>
       </View>
       <View style={styles.filterContainer}>
         <View style={styles.wrapperFill}>
           <Filter />
-          <LowestToHigh 
+          <SortByButton 
             submit={handleShowSlide}
+            name={sortName.name}
           />
           <GridView />
         </View>
@@ -114,7 +131,9 @@ const Shop = () => {
       <SortBy 
         slideSize={slide.size} 
         title='Sort By' 
-        showSlide={handleShowSlide} 
+        showSlide={handleShowSlide}
+        sortName={sortName.name}
+        sortNameSubmit={handleSortName}
       />
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#00000010'}}>
 
