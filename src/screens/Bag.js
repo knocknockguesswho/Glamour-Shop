@@ -11,35 +11,42 @@ export class Bag extends Component {
       bags: [
         {
           id: 1,
-          image: `https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg`,
+          image:
+            'https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg',
           product: 'T-Shirt',
           color: 'Gray',
           size: 'L',
-          price: 100,
+          price: 10,
+          total: 10,
           stock: 10,
           qty: 1,
         },
         {
           id: 2,
-          image: `https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg`,
+          image:
+            'https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg',
           product: 'Clothes',
           color: 'Black',
           size: 'XL',
-          price: 80,
+          price: 10,
+          total: 10,
           stock: 10,
           qty: 1,
         },
         {
           id: 3,
-          image: `https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg`,
+          image:
+            'https://ae01.alicdn.com/kf/HTB1ClpxqkKWBuNjy1zjq6AOypXa5/Liseaven-Kaos-Pria-Katun-T-Shirt-Penuh-Lengan-Tshirt-Pria-Warna-Solid-Atasan-Kaus-Mandarin-Kerah.jpg_640x640.jpg',
           product: 'Pants',
           color: 'White',
           size: 'M',
-          price: 150,
+          price: 10,
+          total: 10,
           stock: 10,
           qty: 1,
         },
       ],
+      total: 0,
     };
   }
 
@@ -49,13 +56,17 @@ export class Bag extends Component {
 
   handleMinus = (id) => {
     let bags = [...this.state.bags];
-    bags[id - 1].qty = bags[id - 1].qty - 1;
+    const price = bags[id].total;
+    bags[id].qty = bags[id].qty - 1;
+    bags[id].price = price * bags[id].qty;
     this.setState({bags: bags});
   };
 
   handlePlus = (id) => {
     let bags = [...this.state.bags];
-    bags[id - 1].qty = bags[id - 1].qty + 1;
+    const price = bags[id].total;
+    bags[id].qty = bags[id].qty + 1;
+    bags[id].price = price * bags[id].qty;
     this.setState({bags: bags});
   };
 
@@ -72,19 +83,20 @@ export class Bag extends Component {
         <Text style={styles.bagTitle}>My Bag</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.bagList}>
-            {this.state.bags.map((bag) => {
+            {this.state.bags.map((bag, index) => {
+              this.state.total = this.state.total += bag.total;
               return (
                 <CartBagList
-                  key={bag.id}
+                  key={index}
                   image={bag.image}
                   product={bag.product}
                   color={bag.color}
                   size={bag.size}
                   qty={bag.qty}
                   price={bag.price}
-                  minus={bag.qty > 1 ? () => this.handleMinus(bag.id) : null}
+                  minus={bag.qty > 1 ? () => this.handleMinus(index) : null}
                   plus={
-                    bag.qty < bag.stock ? () => this.handlePlus(bag.id) : null
+                    bag.qty < bag.stock ? () => this.handlePlus(index) : null
                   }
                 />
               );
@@ -93,15 +105,8 @@ export class Bag extends Component {
         </ScrollView>
         <View style={styles.checkoutContainer}>
           <View style={styles.checkoutContent}>
-            <Text style={{color: '#9B9B9B', fontSize: 16}}>Total amount:</Text>
-            <Text
-              style={{
-                color: '#222',
-                fontSize: 18,
-                fontWeight: '700',
-              }}>
-              112$
-            </Text>
+            <Text style={styles.amount_total}>Total amount:</Text>
+            <Text style={styles.amount}>{`${this.state.total}$`}</Text>
           </View>
           <Button
             title="CHECK OUT"
@@ -154,4 +159,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
+  amount: {
+    color: '#222',
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  amount_total: {color: '#9B9B9B', fontSize: 16},
 });
