@@ -36,12 +36,12 @@ const Profile = (props) => {
     {
       title: 'Shipping Address',
       description: '3 Addresses',
-      submit: ()=> console.log('Pressed')
+      submit: ()=> props.navigation.push('ShippingAddress')
     },
     {
       title: 'Settings',
       description: 'Notifications, Password',
-      submit: ()=> console.log('Pressed')
+      submit: ()=> props.navigation.push('MyProfileSettings')
     },
   ])
 

@@ -13,13 +13,13 @@ import * as Animatable from 'react-native-animatable';
 /*
 submit? submit(function())
 */
-export default SwitchToggle = ({submit}) =>{
+export default SwitchToggle = ({toggleActive, togglePress}) =>{
 
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(toggleActive)
 
   const handleToggle = () =>{
-    if(submit!==undefined){
-      submit()
+    if(togglePress!==undefined){
+      togglePress()
       setActive(!active)
     } else{
       console.log(`variable 'submit' expecting function`)
@@ -43,10 +43,9 @@ const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   toggleContainer:{
     width: width*.1,
-    height: width*.05,
     backgroundColor: '#9B9B9B50',
     borderRadius: 100,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   toggleCircle: (active) =>({
     width: width*.055,
@@ -54,5 +53,6 @@ const styles = StyleSheet.create({
     backgroundColor: active? '#2AA952' : 'white',
     alignSelf: active? 'flex-end' : 'auto',
     borderRadius: 100,
+    elevation: 1.25
   })
 })

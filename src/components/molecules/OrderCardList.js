@@ -14,21 +14,6 @@ import {
 
 export default OrderCardList = ({listData}) =>{
 
-  const [address, setAddress] = useState([
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-    {
-      name:'Jane Doe',
-      address:'3 Newbridge Court Chino Hills, CA 91709, United States'
-    },
-  ])
-
   return(
     <>
       <View style={styles.mainContainer}>

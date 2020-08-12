@@ -49,7 +49,7 @@ class ChangeAddress extends Component {
   }
 
   handleBackButton = () =>{
-    console.log('Go Back')
+    this.props.navigation.goBack()
   }
 
   handleSaveAddressButton = () =>{

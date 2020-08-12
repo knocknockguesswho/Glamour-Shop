@@ -3,7 +3,6 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import {
   AddShippingAddress,
-  Catalogue,
   ChangeAddress,
   MyOrders,
   Splash,
@@ -15,6 +14,10 @@ import {
   Bag,
   Profile,
   Login,
+  MyProfileSettings,
+  MyBagCheckout,
+  Search,
+  Filter,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -35,7 +38,7 @@ const MainApp = () => {
 
 const TabProfile = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Profile">
       <Stack.Screen
         name="Profile"
         component={Profile}
@@ -46,13 +49,18 @@ const TabProfile = () => {
         component={MyOrders}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="ShippingAddress"
+        component={ShippingAddres}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MainApp">
+    <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -63,11 +71,6 @@ const App = () => {
         component={ChangeAddress}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
-        name="MyOrders"
-        component={MyOrders}
-        options={{headerShown: false}}
-      /> */}
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -84,18 +87,28 @@ const App = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
+        name="MyProfileSettings"
+        component={MyProfileSettings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MyBagCheckout"
+        component={MyBagCheckout}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Success"
         component={Success}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Catalogue"
-        component={Catalogue}
+        name="Search"
+        component={Search}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="ShippingAddress"
-        component={ShippingAddres}
+        name="Filter"
+        component={Filter}
         options={{headerShown: false}}
       />
       <Stack.Screen

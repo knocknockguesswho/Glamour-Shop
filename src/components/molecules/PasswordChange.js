@@ -14,26 +14,14 @@ import {
   TextFieldMedium
 } from '../atoms';
 
-export default PasswordChange = ({title, active}) =>{
+export default PasswordChange = ({title, slideSize, showSlide}) =>{
 
   const [position, setPosition] = useState({
-    top: width,
-    bottom: 0
+    top: width*.95,
+    bottom: slideSize
   });
 
-  useEffect(()=>{
-    if(active==true){
-      setPosition({
-        ...position,
-        bottom: width
-      })
-    } setPosition({
-      ...position,
-      bottom: 0
-    })
-  },[])
-
-  const draggedValue = new Animated.Value(position.bottom);
+  const draggedValue = new Animated.Value(slideSize || position.bottom);
   const ModalRef = useRef(null);
 
   return(
@@ -41,13 +29,14 @@ export default PasswordChange = ({title, active}) =>{
       <View style={styles.sheetContainer}>
         <SlidingUpPanel
         ref={ModalRef}
-        draggableRange={{top: height-position.top, bottom: position.bottom}}
+        draggableRange={{top: height-position.top, bottom: 0}}
         animatedValue={draggedValue}
         height={height}
-        friction={.4}
+        friction={.5}
+        onMomentumDragStart={()=>showSlide()}
         >
           <View style={styles.sheetContent}>
-            <View style={styles.sheetHandle}></View>
+            <TouchableOpacity onPress={showSlide} activeOpacity={1} style={styles.sheetHandle}></TouchableOpacity>
             <Text style={styles.sliderTitle}>{title}</Text>
             <View style={styles.sliderMain}>
               <TextFieldMedium placeholder='Old Password' value='' type='none' secure={true} submit={()=>console.log('test submit oldpass')} />
@@ -80,14 +69,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 10,
+    elevation: 10,
   },
   sheetHandle:{
-    height: 4,
-    width: 35,
+    height: 5,
+    width: 70,
     backgroundColor: '#bbb',
     borderRadius: 6,
     alignSelf: 'center',
-    marginTop: 6
+    marginTop: width*.03,
+    marginBottom: width*.03
   },
   sliderTitle:{
     alignSelf: 'center',
