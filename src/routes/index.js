@@ -33,22 +33,22 @@ const MainApp = () => {
   );
 };
 
-const TabProfile = () =>{
-  return(
+const TabProfile = () => {
+  return (
     <Stack.Navigator>
-      <Stack.Screen 
-        name='Profile'
+      <Stack.Screen
+        name="Profile"
         component={Profile}
         options={{headerShown: false}}
       />
-      <Stack.Screen 
-        name='MyOrders'
+      <Stack.Screen
+        name="MyOrders"
         component={MyOrders}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 const App = () => {
   return (
