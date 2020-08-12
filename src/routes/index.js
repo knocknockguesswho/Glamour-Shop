@@ -16,6 +16,9 @@ import {
   Login,
   MyProfileSettings,
   MyBagCheckout,
+  OrderDetails,
+  Search,
+  Filter,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -34,31 +37,36 @@ const MainApp = () => {
   );
 };
 
-const TabProfile = () =>{
-  return(
-    <Stack.Navigator initialRouteName='Profile'>
-      <Stack.Screen 
-        name='Profile'
+const TabProfile = () => {
+  return (
+    <Stack.Navigator initialRouteName="Profile">
+      <Stack.Screen
+        name="Profile"
         component={Profile}
         options={{headerShown: false}}
       />
-      <Stack.Screen 
-        name='MyOrders'
+      <Stack.Screen
+        name="MyOrders"
         component={MyOrders}
         options={{headerShown: false}}
       />
-      <Stack.Screen 
-        name='ShippingAddress'
+      <Stack.Screen
+        name="ShippingAddress"
         component={ShippingAddres}
         options={{headerShown: false}}
       />
+      <Stack.Screen 
+        name='OrderDetails'
+        component={OrderDetails}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="MyBagCheckout">
+    <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -97,6 +105,16 @@ const App = () => {
       <Stack.Screen
         name="Success"
         component={Success}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Filter"
+        component={Filter}
         options={{headerShown: false}}
       />
       <Stack.Screen

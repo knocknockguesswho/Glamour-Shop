@@ -3,6 +3,7 @@ import ChangeAddress from './ChangeAddress';
 import MyOrders from './MyOrders';
 import MyProfileSettings from './MyProfileSettings';
 import MyBagCheckout from './MyBagCheckout';
+import OrderDetails from './OrderDetails';
 import ShippingAddres from './ShippingAddress';
 import Signup from './Signup';
 import Splash from './Splash';
@@ -12,6 +13,8 @@ import Shop from './Shop';
 import Bag from './Bag';
 import Profile from './Profile';
 import Login from './Login';
+import Search from './Search';
+import Filter from './Filter';
 
 export {
   AddShippingAddress,
@@ -19,6 +22,7 @@ export {
   MyOrders,
   MyBagCheckout,
   MyProfileSettings,
+  OrderDetails,
   Splash,
   ShippingAddres,
   Signup,
@@ -28,4 +32,6 @@ export {
   Shop,
   Bag,
   Profile,
+  Search,
+  Filter,
 };
