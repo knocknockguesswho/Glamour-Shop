@@ -13,6 +13,7 @@ import Bag from './Bag';
 import Profile from './Profile';
 import Login from './Login';
 import Search from './Search';
+import Filter from './Filter';
 
 export {
   AddShippingAddress,
@@ -30,4 +31,5 @@ export {
   Bag,
   Profile,
   Search,
+  Filter,
 };

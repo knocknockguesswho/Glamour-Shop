@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {SearchBar, Button} from '../components/atoms';
+import {SearchBar, Button, Gap} from '../components/atoms';
 import {HeaderBackButton} from '../components/molecules';
 
 const Search = () => {
@@ -15,10 +15,12 @@ const Search = () => {
       </View>
       <View style={styles.outline}>
         <Button type="outline" title="work shoes" />
+        <Gap width={20} />
         <Button type="outline" title="swimsuit" />
       </View>
       <View style={styles.outline}>
         <Button type="outline" title="swimsuit    " />
+        <Gap width={20} />
         <Button type="outline" title="work shoes" />
       </View>
     </View>
@@ -33,8 +35,8 @@ const styles = StyleSheet.create({
   container: {padding: 15},
   text: {fontSize: 16, fontWeight: '600'},
   outline: {
+    paddingLeft: 15,
     flexDirection: 'row',
-    justifyContent: 'space-around',
     marginTop: 10,
   },
 });
