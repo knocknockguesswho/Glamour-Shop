@@ -1,17 +1,20 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import Label from './Label';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {config} from '../../config/baseUrl';
 
-const CardHomeItem = (props) => {
+const CardHomeItem = ({onPress, source}) => {
   return (
-    <View style={{marginRight: 16}}>
+    <TouchableOpacity style={{marginRight: 16}} onPress={onPress}>
       <View style={styles.container}>
-      <View style={styles.label}>
-        <Label />
+        {/* <Label /> */}
+        <Image
+          style={styles.image}
+          source={{uri: `${config.url}/images/products/${source}`}}
+        />
       </View>
-        <Image style={styles.image} source={props.img} />
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -24,7 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'pink',
     paddingTop: 10,
-    paddingLeft: 5
+    paddingLeft: 5,
   },
   image: {
     width: null,
@@ -33,10 +36,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flex: 1,
     marginTop: -36,
-    marginLeft: -5
+    marginLeft: -5,
   },
-  label:{
+  label: {
     zIndex: 1,
     paddingLeft: 5,
-  }
+  },
 });
