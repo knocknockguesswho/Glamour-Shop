@@ -5,16 +5,19 @@ import {HeaderBackButton} from '../components/molecules';
 
 import {Button} from '../components/atoms';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import ImagePicker from 'react-native-image-picker';
+import {connect} from 'react-redux';
 
 const Profile = (props) => {
   const handleSearchButton = () => {
     console.log('Searching');
   };
+  console.log(props);
 
   const [profile, setProfile] = useState({
-    avatar: '../../assets/images/avatar.png',
-    fullName: 'Matilda Brown',
-    email: 'matildabrown@mail.com',
+    avatar: props.auth.data.image,
+    fullName: props.auth.data.name || '',
+    email: props.auth.data.email || 'matildabrown@mail.com',
   });
 
   const [listedButton, setListedButton] = useState([
@@ -35,6 +38,17 @@ const Profile = (props) => {
     },
   ]);
 
+  const handleImage = () => {
+    const options = {
+      noData: true,
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      if (response.uri) {
+        setProfile({...profile, avatar: response});
+      }
+    });
+  };
+
   return (
     <View style={styles.mainContainer}>
       <HeaderBackButton
@@ -47,10 +61,20 @@ const Profile = (props) => {
       <View style={{paddingLeft: width * 0.04}}>
         <Text style={styles.profileTitle}>My Profile</Text>
 
-        <TouchableOpacity style={styles.avatarSection}>
+        <TouchableOpacity
+          style={styles.avatarSection}
+          onPress={() => handleImage()}>
           <View style={styles.avatarContainer}>
             <Image
-              source={require('../../assets/images/avatar.png')}
+              source={
+                profile.avatar === null
+                  ? require('../../assets/images/avatar.png')
+                  : {
+                      uri:
+                        `http://192.168.43.81:3000/images/users/${profile.avatar}` ||
+                        profile.avatar.uri,
+                    }
+              }
               style={{
                 flex: 1,
                 width: null,
@@ -83,7 +107,10 @@ const Profile = (props) => {
   );
 };
 
-export default Profile;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps)(Profile);
 
 const {height, width} = Dimensions.get('screen');
 
