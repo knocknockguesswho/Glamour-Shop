@@ -24,7 +24,7 @@ const Home = (props) => {
     await props
       .getAllProducts(token)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setNewest(response.value.data.data);
       })
       .catch((error) => console.log(error.response));
