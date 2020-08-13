@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import {StyleSheet, Text, View, Dimensions, ScrollView, Image} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  ScrollView,
+  Image,
+} from 'react-native';
 import {HeaderBackButton} from '../components/molecules';
 import {Filter, GridView, SortByButton} from '../components/atoms';
 
-import {
-  CardWithLeftImageList,
-  SortBy
-} from '../components/molecules'
+import {connect} from 'react-redux';
+import {getAllProducts} from '../redux/actions/products';
+
+import {CardWithLeftImageList, SortBy} from '../components/molecules';
 
 const Shop = (props) => {
-
   const [items, setItems] = useState([
     {
       name: 'Pullover',
@@ -17,10 +23,12 @@ const Shop = (props) => {
       rating: 4,
       feedBack: 10,
       price: 51,
-      image: <Image 
-                source={require('../../assets/images/dumy1.png')} 
-                style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
-              />
+      image: (
+        <Image
+          source={require('../../assets/images/dumy1.png')}
+          style={{flex: 1, width: null, height: null, resizeMode: 'cover'}}
+        />
+      ),
     },
     {
       name: 'Pullover',
@@ -28,10 +36,12 @@ const Shop = (props) => {
       rating: 4,
       feedBack: 10,
       price: 51,
-      image: <Image 
-                source={require('../../assets/images/dumy2.png')} 
-                style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
-              />
+      image: (
+        <Image
+          source={require('../../assets/images/dumy2.png')}
+          style={{flex: 1, width: null, height: null, resizeMode: 'cover'}}
+        />
+      ),
     },
     {
       name: 'Pullover',
@@ -39,10 +49,12 @@ const Shop = (props) => {
       rating: 4,
       feedBack: 10,
       price: 51,
-      image: <Image 
-                source={require('../../assets/images/dumy1.png')} 
-                style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
-              />
+      image: (
+        <Image
+          source={require('../../assets/images/dumy1.png')}
+          style={{flex: 1, width: null, height: null, resizeMode: 'cover'}}
+        />
+      ),
     },
     {
       name: 'Pullover',
@@ -50,106 +62,110 @@ const Shop = (props) => {
       rating: 4,
       feedBack: 10,
       price: 51,
-      image: <Image 
-                source={require('../../assets/images/dumy2.png')} 
-                style={{flex: 1,  width: null, height: null, resizeMode: 'cover'}} 
-              />
+      image: (
+        <Image
+          source={require('../../assets/images/dumy2.png')}
+          style={{flex: 1, width: null, height: null, resizeMode: 'cover'}}
+        />
+      ),
     },
-  ])
+  ]);
 
   const [slide, setSlide] = useState({
-    size: 0
-  })
-  
-  const [sortName, setSortName] = useState({
-    name: 'Price: lowest to high'
-  })
+    size: 0,
+  });
 
-  const handleShowSlide = () =>{
-    if(slide.size===0){
+  const [sortName, setSortName] = useState({
+    name: 'Price: lowest to high',
+  });
+
+  const handleShowSlide = () => {
+    if (slide.size === 0) {
       setSlide({
         ...slide,
-        size: width*1.05
-      })
+        size: width * 1.05,
+      });
     } else {
       setSlide({
         ...slide,
-        size: 0
-      })
+        size: 0,
+      });
     }
-  }
+  };
 
-
-  const handleSortName = (name) =>{
+  const handleSortName = (name) => {
     setSortName({
       ...sortName,
-      name: name
-    })
-  }
+      name: name,
+    });
+  };
 
-  const handleGoToFilter = () =>{
-    props.navigation.push('Filter')
-  }
+  const handleGoToFilter = () => {
+    props.navigation.push('Filter');
+  };
 
-  const handleBackButton = () =>{
-    props.navigation.goBack()
-  }
+  const handleBackButton = () => {
+    props.navigation.goBack();
+  };
 
   return (
     <>
-    <View style={styles.page}>
-      <HeaderBackButton rightComponent={true} rightCompName="search" submit={handleBackButton} />
-      <View style={styles.wrapper}>
-        <Text style={styles.title}>Women's tops</Text>
-      </View>
-      <View style={styles.filterContainer}>
-        <View style={styles.wrapperFill}>
-          <Filter submit={handleGoToFilter}/>
-          <SortByButton 
-            submit={handleShowSlide}
-            name={sortName.name}
-          />
-          <GridView />
+      <View style={styles.page}>
+        <HeaderBackButton
+          rightComponent={true}
+          rightCompName="search"
+          submit={handleBackButton}
+        />
+        <View style={styles.wrapper}>
+          <Text style={styles.title}>Women's tops</Text>
         </View>
-      </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={styles.itemList}>
-          {items.map((item, index)=>{
-            return(
-              <CardWithLeftImageList 
-                key={index}
-                sourceImg={item.image}
-                itemName={item.name}
-                itemDesign={item.design}
-                itemRating={item.rating}
-                itemFeedback={item.feedBack}
-                itemPrice={item.price}
-                type='filter-list'
-              />
-            )
-          })}
+        <View style={styles.filterContainer}>
+          <View style={styles.wrapperFill}>
+            <Filter submit={handleGoToFilter} />
+            <SortByButton submit={handleShowSlide} name={sortName.name} />
+            <GridView />
+          </View>
         </View>
-      </ScrollView>
-    </View>
-    <View style={styles.sliderContainer}>
-      <SortBy 
-        slideSize={slide.size} 
-        title='Sort By' 
-        showSlide={handleShowSlide}
-        sortName={sortName.name}
-        sortNameSubmit={handleSortName}
-      />
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#00000010'}}>
-
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.itemList}>
+            {items.map((item, index) => {
+              return (
+                <CardWithLeftImageList
+                  key={index}
+                  sourceImg={item.image}
+                  itemName={item.name}
+                  itemDesign={item.design}
+                  itemRating={item.rating}
+                  itemFeedback={item.feedBack}
+                  itemPrice={item.price}
+                  type="filter-list"
+                />
+              );
+            })}
+          </View>
+        </ScrollView>
       </View>
-    </View>
+      <View style={styles.sliderContainer}>
+        <SortBy
+          slideSize={slide.size}
+          title="Sort By"
+          showSlide={handleShowSlide}
+          sortName={sortName.name}
+          sortNameSubmit={handleSortName}
+        />
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: '#00000010',
+          }}></View>
+      </View>
     </>
   );
 };
 
-export default Shop;
-
-const {width, height} = Dimensions.get('screen')
+const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   page: {flex: 1},
@@ -162,15 +178,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  filterContainer:{
+  filterContainer: {
     width: width,
-    height: width*.15,
-    backgroundColor: 'white'
+    height: width * 0.15,
+    backgroundColor: 'white',
   },
-  sliderContainer:{
+  sliderContainer: {
     position: 'absolute',
     right: 0,
     left: 0,
     bottom: 0,
   },
 });
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  products: state.products,
+});
+
+const mapDispatchToProps = {getAllProducts};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Shop);
