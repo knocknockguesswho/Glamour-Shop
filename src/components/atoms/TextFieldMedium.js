@@ -72,12 +72,11 @@ const TextFieldMedium = ({
             placeholderTextColor={'#22222250'}
             value={input.value}
             onFocus={() => setInput({...input, isTyping: true})}
-            onBlur={() => handleSubmitEditing()}
-            onChangeText={(val) => setInput({...input, value: val})}
+            onBlur={() => handleBlur()}
+            onChangeText={(val) => handleSubmitEditing(val)}
             textContentType={type}
             secureTextEntry={secure}
             style={styles.formBar(input.isError)}
-            onSubmitEditing={() => handleSubmitEditing}
           />
 
           <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={()=>handleBlur()} onChangeText={(value)=>handleSubmitEditing(value)} textContentType={type} secureTextEntry={secure} style={styles.formBar(input.isError)}  />

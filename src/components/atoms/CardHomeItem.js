@@ -6,7 +6,9 @@ const CardHomeItem = (props) => {
   return (
     <View style={{marginRight: 16}}>
       <View style={styles.container}>
+      <View style={styles.label}>
         <Label />
+      </View>
         <Image style={styles.image} source={props.img} />
       </View>
     </View>
@@ -21,12 +23,20 @@ const styles = StyleSheet.create({
     height: 218,
     borderRadius: 10,
     backgroundColor: 'pink',
+    paddingTop: 10,
+    paddingLeft: 5
   },
   image: {
-    width: undefined,
-    height: undefined,
+    width: null,
+    height: null,
     resizeMode: 'cover',
     borderRadius: 10,
     flex: 1,
+    marginTop: -36,
+    marginLeft: -5
   },
+  label:{
+    zIndex: 1,
+    paddingLeft: 5,
+  }
 });
