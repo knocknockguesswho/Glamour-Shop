@@ -8,6 +8,7 @@ import {
   TouchableHighlight,
   TextInput
 } from 'react-native';
+import IconFeather from 'react-native-vector-icons/Feather'
 import Icon from 'react-native-vector-icons/Fontisto';
 
 //BUG WHEN INPUT ERROR, IT RETURNS VALUE OF ''; EXPECTED VALUE OF CURRENT VALUE
@@ -21,17 +22,28 @@ export default SearchBar = ({placeholder, value, type}) =>{
     doneSubmitting: false
   })
 
+  const handleSearch = () =>{
+    console.log('Searching')
+  }
+
   return(
     <>
-      <View style={styles.formContainer(input.isError)}>
-        <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: true, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} style={styles.formBar(input.isError)} onSubmitEditing={(value)=>setInput({...input, isError: true, value: value})} keyboardType='web-search' />
-          <View style={styles.searchIcon}>
-            <Icon 
-              name='zoom'
-              size={15}
-              color='#22222280'
-            />
-          </View>
+      <View style={{flexDirection: 'row', alignItems: 'center', marginVertical: width*.05}}>
+        <IconFeather 
+          name='chevron-left'
+          size={25}
+          color='#222'
+        />
+        <View style={styles.formContainer(input.isError)}>
+          <TextInput placeholder={placeholder} placeholderTextColor={'#22222250'} value={input.value} onFocus={()=>setInput({...input, isTyping: true})} onBlur={(value)=>setInput({...input, isTyping: true, value: value, doneSubmitting: true})} onChangeText={(value)=>setInput(value)} textContentType={type} style={styles.formBar(input.isError)} onSubmitEditing={(value)=>setInput({...input, isError: true, value: value})} keyboardType='web-search' />
+            <View style={styles.searchIcon}>
+              <Icon 
+                name='zoom'
+                size={15}
+                color='#22222280'
+              />
+            </View>
+        </View>
       </View>
     </>
   )

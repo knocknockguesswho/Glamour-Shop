@@ -26,12 +26,20 @@ const styles = StyleSheet.create({
     height: 218,
     borderRadius: 10,
     backgroundColor: 'pink',
+    paddingTop: 10,
+    paddingLeft: 5,
   },
   image: {
-    width: undefined,
-    height: undefined,
+    width: null,
+    height: null,
     resizeMode: 'cover',
     borderRadius: 10,
     flex: 1,
+    marginTop: -36,
+    marginLeft: -5,
+  },
+  label: {
+    zIndex: 1,
+    paddingLeft: 5,
   },
 });
