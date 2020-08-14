@@ -16,6 +16,7 @@ import {getAllProducts} from '../redux/actions/products';
 import {CardWithLeftImageList, SortBy} from '../components/molecules';
 
 const Shop = (props) => {
+  console.log(props.products.data, 'product');
   const [items, setItems] = useState([
     {
       name: 'Pullover',
@@ -128,15 +129,27 @@ const Shop = (props) => {
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.itemList}>
-            {items.map((item, index) => {
+            {props.products.data.map((item, index) => {
               return (
                 <CardWithLeftImageList
                   key={index}
-                  sourceImg={item.image}
-                  itemName={item.name}
-                  itemDesign={item.design}
-                  itemRating={item.rating}
-                  itemFeedback={item.feedBack}
+                  sourceImg={
+                    <Image
+                      source={{
+                        uri: `http:192.168.43.81:3000/images/products/${item.image}`,
+                      }}
+                      style={{
+                        flex: 1,
+                        width: null,
+                        height: null,
+                        resizeMode: 'cover',
+                      }}
+                    />
+                  }
+                  itemName={item.products}
+                  itemDesign={item.color}
+                  itemRating={5}
+                  itemFeedback={10}
                   itemPrice={item.price}
                   type="filter-list"
                 />

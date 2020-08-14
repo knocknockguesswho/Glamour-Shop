@@ -1,3 +1,3 @@
 export const config = {
-  url: 'http://192.100.47.103:3000',
+  url: 'http://192.168.43.81:3000',
 };

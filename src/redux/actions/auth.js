@@ -1,12 +1,12 @@
 import axios from 'axios';
-// import {API_URL} from '@env';
+import {config} from '../../config/baseUrl';
 
 export const Login = (data) => {
   return {
     type: 'LOGIN',
     payload: axios({
       method: 'POST',
-      url: 'http://192.168.43.81:3000/api/auth/login',
+      url: 'http://10.227.60.141:3000/api/auth/login',
       data: {
         email: data.email,
         password: data.password,
@@ -20,7 +20,7 @@ export const Register = (data) => {
     type: 'REGISTER',
     payload: axios({
       method: 'POST',
-      url: 'http://192.168.43.81:3000/api/auth/register',
+      url: 'http://10.227.60.141:3000/api/auth/register',
       data: {
         email: data.email,
         password: data.password,
@@ -35,7 +35,7 @@ export const Forgot = (data) => {
     type: 'FORGOT',
     payload: axios({
       method: 'POST',
-      url: 'http://192.168.43.81:3000/api/auth/forgot-password',
+      url: 'http://10.227.60.141:3000/api/auth/forgot-password',
       data: {
         email: data.email,
       },
@@ -48,7 +48,7 @@ export const Verification = (data) => {
     type: 'VERIFY',
     payload: axios({
       method: 'POST',
-      url: 'http://192.168.43.81:3000/api/auth/verify',
+      url: 'http://10.227.60.141:3000/api/auth/verify',
       data: {
         email: data.email,
         code: data.code,
@@ -62,7 +62,7 @@ export const editProfile = (token, data) => {
     type: 'EDIT',
     payload: axios({
       method: 'PUT',
-      url: 'http://192.168.43.81:3000/api/auth/profile',
+      url: 'http://10.227.60.141:3000/api/auth/profile',
       headers: {
         Authorization: token,
       },

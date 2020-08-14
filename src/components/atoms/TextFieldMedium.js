@@ -78,34 +78,6 @@ const TextFieldMedium = ({
             secureTextEntry={secure}
             style={styles.formBar(input.isError)}
           />
-
-          <TextInput
-            placeholder={placeholder}
-            placeholderTextColor={'#22222250'}
-            value={input.value}
-            onFocus={() => setInput({...input, isTyping: true})}
-            onBlur={() => handleBlur()}
-            onChangeText={(val) => handleSubmitEditing(val)}
-            textContentType={type}
-            secureTextEntry={secure}
-            style={styles.formBar(input.isError)}
-          />
-
-          {input.value !== '' && check == true ? (
-            <View style={styles.validation}>
-              <Icon
-                name={input.isError ? 'x' : 'check'}
-                size={20}
-                color={input.isError ? '#F01F0E' : '#2AA952'}
-              />
-            </View>
-          ) : withArrow ? (
-            <TouchableOpacity style={styles.withArrow}>
-              <Icon name="chevron-right" size={15} color="#22222280" />
-            </TouchableOpacity>
-          ) : (
-            <></>
-          )}
           {input.value !== '' && check === true ? (
             <View style={styles.validation}>
               <Icon
