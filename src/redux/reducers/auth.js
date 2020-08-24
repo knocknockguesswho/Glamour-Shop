@@ -1,0 +1,147 @@
+const inialState = {
+  data: {},
+  errorMessage: null,
+  isLoading: false,
+};
+
+const auth = (state = inialState, action) => {
+  switch (action.type) {
+    case 'LOGIN_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case 'LOGIN_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: action.payload.response.data.data,
+      };
+    }
+    case 'LOGIN_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        errorMessage: null,
+        data: action.payload.data.data[0],
+      };
+    }
+
+    case 'REGISTER_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        data: {},
+      };
+    }
+    case 'REGISTER_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'REGISTER_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload.data.data,
+      };
+    }
+    case 'FORGOT_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        data: {},
+      };
+    }
+    case 'FORGOT_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'FORGOT_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload.data.data,
+      };
+    }
+    case 'CHANGE_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        data: {},
+      };
+    }
+    case 'CHANGE_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'CHANGE_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload.data.data,
+      };
+    }
+    case 'VERIFY_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        data: {},
+      };
+    }
+    case 'VERIFY_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'FORGOT_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'EDIT_PENDING': {
+      return {
+        ...state,
+        data: {},
+      };
+    }
+    case 'EDIT_REJECTED': {
+      return {
+        ...state,
+        data: {},
+      };
+    }
+    case 'EDIT_FULFILLED': {
+      return {
+        ...state,
+        data: action.payload.data.data,
+      };
+    }
+
+    case 'LOGOUT': {
+      return {
+        ...state,
+        data: {},
+      };
+    }
+
+    default: {
+      return state;
+    }
+  }
+};
+
+export default auth;
