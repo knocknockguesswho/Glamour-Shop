@@ -112,7 +112,17 @@ export class Bag extends Component {
             title="CHECK OUT"
             type="primary"
             big
-            submit={() => console.log('ok')}
+            submit={
+              () => {
+                this.props.navigation.replace('Payment', {
+                  url:
+                    'https://app.sandbox.midtrans.com/snap/v2/vtweb/0bc83f1b-555f-4b06-b33e-f32493ca3e36',
+                });
+              }
+              // console.log(
+              //   'https://app.sandbox.midtrans.com/snap/v2/vtweb/0bc83f1b-555f-4b06-b33e-f32493ca3e36',
+              // )
+            }
           />
         </View>
       </View>

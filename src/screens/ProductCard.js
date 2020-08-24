@@ -1,36 +1,51 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {ImageBackground, StyleSheet, Text, View} from 'react-native';
 import {CoverProduct} from '../../assets/images';
+import {HeaderBackButton} from '../components/molecules';
+import {Button} from '../components/atoms';
+import {connect} from 'react-redux';
+import {config} from '../config/baseUrl';
 
-const ProductCard = () => {
-  handleBackButton = () => {
-    this.props.navigation.goBack();
+const ProductCard = ({navigation, route, products}) => {
+  const [product, setProduct] = useState('');
+  const handleBack = () => {
+    navigation.goBack();
   };
+
+  const getProduct = (id) => {
+    const data = products.data;
+    const detail = data.filter((e) => {
+      return e.id === id;
+    });
+
+    setProduct(detail[0]);
+  };
+
+  useEffect(() => {
+    getProduct(route.params.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [product]);
   return (
     <View style={styles.page}>
       <HeaderBackButton
         midCompTitle="Short dress"
         middleComponent={true}
-        submit={handleBackButton}
+        submit={() => handleBack()}
       />
       <ImageBackground
-        source={CoverProduct}
-        style={styles.background}></ImageBackground>
+        source={{uri: `${config.url}/images/products/${product.image}`}}
+        style={styles.background}
+      />
       <View style={styles.content}>
         <View style={styles.contentText}>
           <View>
-            <Text style={styles.brand}>H&M</Text>
-            <Text style={styles.type}>Short black dress</Text>
+            <Text style={styles.brand}>{product.products}</Text>
+            <Text style={styles.type}>{product.category}</Text>
           </View>
-          <Text style={styles.price}>$19.99</Text>
+          <Text style={styles.price}>${product.price}</Text>
         </View>
         <View style={styles.contentDesc}>
-          <Text style={styles.desc}>
-            Short dress in soft cotton jersey with decorative buttons down the
-            front and a wide, frill-trimmed square neckline with concealed
-            elastication. Elasticated seam under the bust and short puff sleeves
-            with a small frill trim.
-          </Text>
+          <Text style={styles.desc}>{product.description}</Text>
         </View>
         <View style={styles.button}>
           <Button type="primary" title="ADD TO CART" big />
@@ -40,7 +55,10 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+const mapStateToProps = (state) => ({
+  products: state.products,
+});
+export default connect(mapStateToProps)(ProductCard);
 
 const styles = StyleSheet.create({
   page: {backgroundColor: '#F9F9F9', flex: 1},

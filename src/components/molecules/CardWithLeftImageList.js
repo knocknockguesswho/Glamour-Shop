@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
-import {
-  CardWithLeftImage,
-} from '../atoms'
+import {CardWithLeftImage} from '../atoms';
 
-
-export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemColor, itemSize, itemUnits, itemPrice, itemRating, itemFeedback, type}) =>{
-
+const CardWithLeftImageList = ({
+  sourceImg,
+  itemName,
+  itemDesign,
+  itemColor,
+  itemSize,
+  itemUnits,
+  itemPrice,
+  itemRating,
+  itemFeedback,
+  type,
+}) => {
   const [content, setContent] = useState({
     itemName,
     itemDesign,
@@ -23,27 +30,29 @@ export default CardWithLeftImageList = ({sourceImg, itemName, itemDesign, itemCo
     itemUnits,
     itemPrice,
     itemRating,
-    itemFeedback
-  })
+    itemFeedback,
+  });
 
-  return(
+  return (
     <>
       <View style={styles.mainContainer}>
-        <View style={{alignSelf:'center'}}>
-            <CardWithLeftImage
-              sourceImg={sourceImg}
-              content={content}
-              type={type}
-            />
+        <View style={{alignSelf: 'center'}}>
+          <CardWithLeftImage
+            sourceImg={sourceImg}
+            content={content}
+            type={type}
+          />
         </View>
       </View>
     </>
-  )
-}
+  );
+};
+
+export default CardWithLeftImageList;
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
-  mainContainer:{
+  mainContainer: {
     width: width,
-  }
-})
+  },
+});

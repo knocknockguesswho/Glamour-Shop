@@ -7,6 +7,7 @@ import {Button} from '../components/atoms';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import ImagePicker from 'react-native-image-picker';
 import {connect} from 'react-redux';
+import {Logout} from '../redux/actions/auth';
 
 const Profile = (props) => {
   const handleSearchButton = () => {
@@ -35,6 +36,15 @@ const Profile = (props) => {
       title: 'Settings',
       description: 'Notifications, Password',
       submit: () => props.navigation.push('MyProfileSettings'),
+    },
+    {
+      title: 'Logout',
+      description: 'Sign Out',
+      submit: async () => {
+        const {dispatch} = props;
+        await dispatch(Logout());
+        props.navigation.replace('Login');
+      },
     },
   ]);
 

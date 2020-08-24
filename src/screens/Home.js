@@ -27,7 +27,12 @@ const Home = (props) => {
         console.log(response);
         setNewest(response.value.data.data);
       })
-      .catch((error) => console.log(error.response));
+      .catch((error) => {
+        console.log(error.response);
+        if (error.response.status === 401) {
+          return props.navigation.replace('Login');
+        }
+      });
   };
 
   useEffect(() => {
@@ -45,12 +50,12 @@ const Home = (props) => {
             <Text style={styles.contentTitle}>New</Text>
             <Text style={styles.desc}>You’ve never seen it before!</Text>
           </View>
-          <TouchableOpacity onPress={() => alert('ok')}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Shop')}>
             <Text style={styles.link}>View All</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.container}>
-          <CardHome products={newest} />
+          <CardHome products={newest} navigation={props.navigation} />
         </View>
       </ScrollView>
     </View>

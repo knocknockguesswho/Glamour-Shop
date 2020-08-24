@@ -24,6 +24,7 @@ import {
   ForgotPassword,
   ResetPassword,
   VerificationChangePassword,
+  Payment,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -71,7 +72,7 @@ const TabProfile = () => {
 
 const App = () => {
   return (
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="MainApp">
       <Stack.Screen
         name="AddShippingAddress"
         component={AddShippingAddress}
@@ -85,6 +86,11 @@ const App = () => {
       <Stack.Screen
         name="Splash"
         component={Splash}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
         options={{headerShown: false}}
       />
       <Stack.Screen

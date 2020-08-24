@@ -14,6 +14,8 @@ import {connect} from 'react-redux';
 import {getAllProducts} from '../redux/actions/products';
 
 import {CardWithLeftImageList, SortBy} from '../components/molecules';
+import {config} from '../config/baseUrl';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const Shop = (props) => {
   console.log(props.products.data, 'product');
@@ -131,28 +133,33 @@ const Shop = (props) => {
           <View style={styles.itemList}>
             {props.products.data.map((item, index) => {
               return (
-                <CardWithLeftImageList
+                <TouchableOpacity
                   key={index}
-                  sourceImg={
-                    <Image
-                      source={{
-                        uri: `http:192.168.43.81:3000/images/products/${item.image}`,
-                      }}
-                      style={{
-                        flex: 1,
-                        width: null,
-                        height: null,
-                        resizeMode: 'cover',
-                      }}
-                    />
-                  }
-                  itemName={item.products}
-                  itemDesign={item.color}
-                  itemRating={5}
-                  itemFeedback={10}
-                  itemPrice={item.price}
-                  type="filter-list"
-                />
+                  onPress={() =>
+                    props.navigation.navigate('ProductCard', {id: item.id})
+                  }>
+                  <CardWithLeftImageList
+                    sourceImg={
+                      <Image
+                        source={{
+                          uri: `${config.url}/images/products/${item.image}`,
+                        }}
+                        style={{
+                          flex: 1,
+                          width: null,
+                          height: null,
+                          resizeMode: 'cover',
+                        }}
+                      />
+                    }
+                    itemName={item.products}
+                    itemDesign={item.color}
+                    itemRating={5}
+                    itemFeedback={10}
+                    itemPrice={item.price}
+                    type="filter-list"
+                  />
+                </TouchableOpacity>
               );
             })}
           </View>

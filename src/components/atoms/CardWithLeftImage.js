@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -6,7 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TouchableHighlight,
-  Image
+  Image,
 } from 'react-native';
 
 //persist whitelist
@@ -14,63 +14,56 @@ import {
 submit? submit(function())
 */
 
-import {
-  OrderDetailsContent,
-  ShopCardContent
-} from '../molecules'
+import {OrderDetailsContent, ShopCardContent} from '../molecules';
 
-export default CardWithLeftImage = ({sourceImg, content, type, submit}) =>{
-
-  return(
+const CardWithLeftImage = ({sourceImg, content, type, submit}) => {
+  return (
     <>
       <View style={styles.cardContainer}>
         <View style={styles.cardContent}>
-          <View style={styles.contentImg}>
-            {sourceImg}
-          </View>
+          <View style={styles.contentImg}>{sourceImg}</View>
           <View style={styles.mainContent}>
-            {type==='order-details'?
-              <OrderDetailsContent 
-                content={content}
-              /> :
-            type==='filter-list'?
-              <ShopCardContent
-                content={content}
-              /> :
-             <Text></Text>
-            }
+            {type === 'order-details' ? (
+              <OrderDetailsContent content={content} />
+            ) : type === 'filter-list' ? (
+              <ShopCardContent content={content} />
+            ) : (
+              <Text></Text>
+            )}
           </View>
         </View>
       </View>
     </>
-  )
-}
+  );
+};
+
+export default CardWithLeftImage;
 
 const {height, width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
-  cardContainer:{
-    width: width*.9,
-    height: width*.3,
+  cardContainer: {
+    width: width * 0.9,
+    height: width * 0.3,
     borderRadius: 8,
     backgroundColor: 'white',
-    marginTop: width*.02,
-    marginBottom: width*.02,
+    marginTop: width * 0.02,
+    marginBottom: width * 0.02,
     elevation: 2,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
-  cardContent:{
+  cardContent: {
     height: '100%',
     width: '100%',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
-  contentImg:{
-    flex: .3,
+  contentImg: {
+    flex: 0.3,
   },
-  mainContent:{
-    flex: .7,
-    paddingVertical: width*.03,
-    paddingHorizontal: width*.03,
-    justifyContent: 'space-around'
-  }
-})
+  mainContent: {
+    flex: 0.7,
+    paddingVertical: width * 0.03,
+    paddingHorizontal: width * 0.03,
+    justifyContent: 'space-around',
+  },
+});
