@@ -22,6 +22,8 @@ import {
   ProductCard,
   Verification,
   ForgotPassword,
+  ResetPassword,
+  VerificationChangePassword,
 } from '../screens';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components/atoms';
@@ -103,6 +105,16 @@ const App = () => {
       <Stack.Screen
         name="Verification"
         component={Verification}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="VerificationChangePassword"
+        component={VerificationChangePassword}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ResetPassword"
+        component={ResetPassword}
         options={{headerShown: false}}
       />
       <Stack.Screen

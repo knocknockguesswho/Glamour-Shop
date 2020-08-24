@@ -1,34 +1,26 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Dimensions,
-  Alert,
-} from 'react-native';
-
-import {FormSignup, HeaderBackButton} from '../components/molecules';
-
-import {Button} from '../components/atoms';
-import {Forgot} from '../redux/actions/auth';
+import {Alert, Dimensions, StyleSheet, View} from 'react-native';
 import {connect} from 'react-redux';
+import {Button} from '../components/atoms';
+import {FormSignup, HeaderBackButton} from '../components/molecules';
+import {Verification} from '../redux/actions/auth';
 
-export class ForgotPassword extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Name: '',
+      Email: '',
+      Password: '',
       formGroup: [
         {
-          placeholder: 'Email',
+          placeholder: 'Code',
           value: '',
-          type: 'emailAddress',
-          secure: false,
+          type: 'password',
+          secure: true,
         },
       ],
     };
-    console.log(this.props);
   }
 
   getData = (param, param2) => {
@@ -41,17 +33,17 @@ export class ForgotPassword extends Component {
     }));
   };
 
-  handleLogin = async () => {
+  handleSignUp = async () => {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
     const data = {
-      email: formGroup[0].value,
+      email: this.props.route.params.email,
+      code: formGroup[1].value,
     };
-
-    await dispatch(Forgot(data))
+    await dispatch(Verification(data))
       .then((res) => {
-        Alert.alert('Check Your Email to reset password');
-        navigation.replace('VerificationChangePassword', {email: data.email});
+        Alert.alert('Verify Success');
+        navigation.replace('ResetPassword', {email: data.email});
       })
       .catch((err) => {
         Alert.alert(err.response.data.data);
@@ -60,13 +52,14 @@ export class ForgotPassword extends Component {
   };
 
   render() {
-    const {navigation} = this.props;
     return (
       <View style={styles.mainContainer}>
-        <HeaderBackButton submit={() => navigation.goBack()} />
+        <HeaderBackButton
+          submit={() => this.props.navigation.replace('Signup')}
+        />
         <View style={styles.formGroup}>
           <FormSignup
-            title="Forgot Password"
+            title="Insert OTP"
             link={null}
             formGroup={this.state.formGroup}
             submit={this.getData}
@@ -74,21 +67,22 @@ export class ForgotPassword extends Component {
         </View>
         <View>
           <Button
-            title="Reset Password"
+            title="Verify"
             big={true}
             type="primary"
-            submit={() => this.handleLogin()}
+            submit={() => {
+              this.handleSignUp();
+            }}
           />
         </View>
       </View>
     );
   }
 }
-
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps)(ForgotPassword);
+export default connect(mapStateToProps)(Signup);
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({

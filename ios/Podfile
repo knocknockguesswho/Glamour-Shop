@@ -12,6 +12,8 @@ target 'GlamourShop' do
 
   pod 'rn-range-slider', :path => '../node_modules/rn-range-slider'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'GlamourShopTests' do
     inherit! :complete
     # Pods for testing

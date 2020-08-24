@@ -14,6 +14,7 @@ import {FormSignup, HeaderBackButton} from '../components/molecules';
 import {Button} from '../components/atoms';
 import {Login as LoginProcess} from '../redux/actions/auth';
 import {connect} from 'react-redux';
+import {config} from '../config/baseUrl';
 
 export class Login extends Component {
   constructor(props) {
@@ -54,6 +55,8 @@ export class Login extends Component {
       email: formGroup[0].value,
       password: formGroup[1].value,
     };
+
+    console.log(data);
 
     await dispatch(LoginProcess(data))
       .then((res) => {

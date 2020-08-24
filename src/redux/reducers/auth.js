@@ -70,6 +70,27 @@ const auth = (state = inialState, action) => {
         data: action.payload.data.data,
       };
     }
+    case 'CHANGE_PENDING': {
+      return {
+        ...state,
+        isLoading: true,
+        data: {},
+      };
+    }
+    case 'CHANGE_REJECTED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: {},
+      };
+    }
+    case 'CHANGE_FULFILLED': {
+      return {
+        ...state,
+        isLoading: false,
+        data: action.payload.data.data,
+      };
+    }
     case 'VERIFY_PENDING': {
       return {
         ...state,

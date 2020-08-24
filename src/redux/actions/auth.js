@@ -6,7 +6,7 @@ export const Login = (data) => {
     type: 'LOGIN',
     payload: axios({
       method: 'POST',
-      url: 'http://10.227.60.141:3000/api/auth/login',
+      url: `${config.url}/api/auth/login`,
       data: {
         email: data.email,
         password: data.password,
@@ -20,7 +20,7 @@ export const Register = (data) => {
     type: 'REGISTER',
     payload: axios({
       method: 'POST',
-      url: 'http://10.227.60.141:3000/api/auth/register',
+      url: `${config.url}/api/auth/register`,
       data: {
         email: data.email,
         password: data.password,
@@ -35,9 +35,23 @@ export const Forgot = (data) => {
     type: 'FORGOT',
     payload: axios({
       method: 'POST',
-      url: 'http://10.227.60.141:3000/api/auth/forgot-password',
+      url: `${config.url}/api/auth/forgot-password`,
       data: {
         email: data.email,
+      },
+    }),
+  };
+};
+
+export const ChangePassword = (data) => {
+  return {
+    type: 'CHANGE',
+    payload: axios({
+      method: 'POST',
+      url: `${config.url}/api/auth/change-password`,
+      data: {
+        email: data.email,
+        password: data.password,
       },
     }),
   };
@@ -48,7 +62,7 @@ export const Verification = (data) => {
     type: 'VERIFY',
     payload: axios({
       method: 'POST',
-      url: 'http://10.227.60.141:3000/api/auth/verify',
+      url: `${config.url}/api/auth/verify`,
       data: {
         email: data.email,
         code: data.code,

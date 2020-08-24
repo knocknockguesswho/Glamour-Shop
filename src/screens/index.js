@@ -17,7 +17,9 @@ import Search from './Search';
 import Filter from './Filter';
 import ProductCard from './ProductCard';
 import Verification from './Verification';
+import VerificationChangePassword from './VerificationChangePassword';
 import ForgotPassword from './ForgotPassword';
+import ResetPassword from './ResetPassword';
 
 export {
   AddShippingAddress,
@@ -39,5 +41,7 @@ export {
   Filter,
   ProductCard,
   Verification,
+  VerificationChangePassword,
   ForgotPassword,
+  ResetPassword,
 };

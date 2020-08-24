@@ -12,7 +12,7 @@ import {
 import {FormSignup, HeaderBackButton} from '../components/molecules';
 
 import {Button} from '../components/atoms';
-import {Forgot} from '../redux/actions/auth';
+import {Forgot, ChangePassword} from '../redux/actions/auth';
 import {connect} from 'react-redux';
 
 export class ForgotPassword extends Component {
@@ -21,14 +21,19 @@ export class ForgotPassword extends Component {
     this.state = {
       formGroup: [
         {
-          placeholder: 'Email',
+          placeholder: 'New Password',
           value: '',
-          type: 'emailAddress',
-          secure: false,
+          type: 'password',
+          secure: true,
+        },
+        {
+          placeholder: 'Password Confirmation',
+          value: '',
+          type: 'password',
+          secure: true,
         },
       ],
     };
-    console.log(this.props);
   }
 
   getData = (param, param2) => {
@@ -45,13 +50,19 @@ export class ForgotPassword extends Component {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
     const data = {
-      email: formGroup[0].value,
+      email: this.props.route.params.email,
+      password: formGroup[0].value,
+      password2: formGroup[1].value,
     };
 
-    await dispatch(Forgot(data))
+    if (data.password2 !== data.password) {
+      return Alert.alert('Password not match');
+    }
+    delete data.password2;
+    await dispatch(ChangePassword(data))
       .then((res) => {
-        Alert.alert('Check Your Email to reset password');
-        navigation.replace('VerificationChangePassword', {email: data.email});
+        Alert.alert('Password has been changed');
+        navigation.replace('Login');
       })
       .catch((err) => {
         Alert.alert(err.response.data.data);
@@ -66,7 +77,7 @@ export class ForgotPassword extends Component {
         <HeaderBackButton submit={() => navigation.goBack()} />
         <View style={styles.formGroup}>
           <FormSignup
-            title="Forgot Password"
+            title="Change Password"
             link={null}
             formGroup={this.state.formGroup}
             submit={this.getData}
@@ -74,7 +85,7 @@ export class ForgotPassword extends Component {
         </View>
         <View>
           <Button
-            title="Reset Password"
+            title="Change Password"
             big={true}
             type="primary"
             submit={() => this.handleLogin()}

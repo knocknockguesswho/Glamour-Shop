@@ -1,18 +1,8 @@
 import React, {Component} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  Dimensions,
-  Alert,
-} from 'react-native';
-
-import {FormSignup, HeaderBackButton} from '../components/molecules';
-
-import {Button} from '../components/atoms';
+import {Alert, Dimensions, StyleSheet, View} from 'react-native';
 import {connect} from 'react-redux';
+import {Button} from '../components/atoms';
+import {FormSignup, HeaderBackButton} from '../components/molecules';
 import {Verification} from '../redux/actions/auth';
 
 class Signup extends Component {
