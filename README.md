@@ -87,3 +87,9 @@ For more information, please contact me at: <contact@farisromadhon.com>
 <!--- If you're not sure which open license to use see https://choosealicense.com/--->
 
 This project uses the following license: [<license_name>](<link>).
+
+## App Design
+
+This Front-End Projects has a UI design to be implemented, you can see how the design by clicking the link below:
+
+https://www.figma.com/file/2kFBFmmJ6SOUmHHaRdIO1f/Team-1?node-id=0%3A1
