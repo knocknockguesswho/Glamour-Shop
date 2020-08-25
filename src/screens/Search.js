@@ -4,7 +4,7 @@ import {SearchBar, Button, Gap} from '../components/atoms';
 import {HeaderBackButton} from '../components/molecules';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Search = () => {
+const Search = (props) => {
 
   const [pop, setPop] = useState([
     {
@@ -28,7 +28,7 @@ const Search = () => {
   return (
     <View style={styles.page}>
       <View style={styles.wrapper}>
-        <SearchBar placeholder='Search' />
+        <SearchBar placeholder='Search' navigation={props.navigation} />
       </View>
       <View style={styles.container}>
         <Text style={styles.text}>Popular search</Text>

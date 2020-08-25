@@ -117,10 +117,11 @@ const Shop = (props) => {
         <HeaderBackButton
           rightComponent={true}
           rightCompName="search"
+          rightCompOnPress={() => props.navigation.push('Search')}
           submit={handleBackButton}
         />
         <View style={styles.wrapper}>
-          <Text style={styles.title}>Women's tops</Text>
+          <Text style={styles.title}> search_result </Text>
         </View>
         <View style={styles.filterContainer}>
           <View style={styles.wrapperFill}>

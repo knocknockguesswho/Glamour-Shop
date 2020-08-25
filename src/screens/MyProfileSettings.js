@@ -87,6 +87,7 @@ export class MyProfileSettings extends Component {
             rightComponent={true}
             backgroundColor="#F9F9F9"
             rightCompName="search"
+            rightCompOnPress={() => this.props.navigation.push('Search')}
             submit={this.handleGoBack}
           />
           <Text style={styles.screenTitle}>Settings</Text>

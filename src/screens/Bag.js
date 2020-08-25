@@ -50,10 +50,6 @@ export class Bag extends Component {
     };
   }
 
-  handleSearch = () => {
-    console.log('Search on press');
-  };
-
   handleMinus = (id) => {
     let bags = [...this.state.bags];
     const price = bags[id].total;
@@ -77,7 +73,7 @@ export class Bag extends Component {
           rightComponent={true}
           rightCompName="search"
           backgroundColor="#f9f9f9"
-          search={this.handleSearch}
+          rightCompOnPress={() => this.props.navigation.push('Search')}
           leftComp={false}
         />
         <Text style={styles.bagTitle}>My Bag</Text>

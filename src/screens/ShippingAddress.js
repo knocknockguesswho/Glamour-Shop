@@ -12,8 +12,6 @@ class ShippingAddress extends Component {
       search: '',
       address: null,
     };
-
-    console.log(this.props, 'address');
   }
 
   fetchAddress = async () => {

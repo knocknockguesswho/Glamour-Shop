@@ -18,7 +18,7 @@ midCompTitle: Page Title
 rightCompName: 'Icon' name
 */
 
-export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTitle, rightComponent, rightCompName, backgroundColor, search}) =>{
+export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTitle, rightComponent, rightCompName, rightCompOnPress, backgroundColor}) =>{
 
 
   const [comp, setComp] = useState({
@@ -46,7 +46,7 @@ export default HeaderBackButton = ({submit, leftComp, middleComponent, midCompTi
         <View style={styles.midComp}>
           <Text style={styles.midCompContent}>{comp.midCompTitle}</Text>
         </View>
-        <TouchableOpacity activeOpacity={.9} style={styles.rightComp} onPress={search}>
+        <TouchableOpacity activeOpacity={.9} style={styles.rightComp} onPress={rightCompOnPress}>
           {rightComponent?
             <Icon 
               name={rightCompName}

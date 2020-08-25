@@ -10,10 +10,6 @@ import {connect} from 'react-redux';
 import {Logout} from '../redux/actions/auth';
 
 const Profile = (props) => {
-  const handleSearchButton = () => {
-    console.log('Searching');
-  };
-  console.log(props);
 
   const [profile, setProfile] = useState({
     avatar: props.auth.data.image,
@@ -64,9 +60,9 @@ const Profile = (props) => {
       <HeaderBackButton
         rightComponent={true}
         rightCompName="search"
+        rightCompOnPress={() => props.navigation.push('Search')}
         leftComp={false}
         backgroundColor="#F9F9F9"
-        search={handleSearchButton}
       />
       <View style={{paddingLeft: width * 0.04}}>
         <Text style={styles.profileTitle}>My Profile</Text>

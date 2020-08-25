@@ -74,7 +74,13 @@ class MyOrders extends Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <HeaderBackButton submit={this.handleBackButton} rightComponent={true} rightCompName='search' backgroundColor='#F9F9F9' />
+        <HeaderBackButton 
+          submit={this.handleBackButton} 
+          rightComponent={true} 
+          rightCompName='search' 
+          rightCompOnPress={() => this.props.navigation.push('Search')}
+          backgroundColor='#F9F9F9' 
+        />
         <Text style={styles.title}>
           My Orders
         </Text>

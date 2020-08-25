@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Fontisto';
 
 //BUG WHEN INPUT ERROR, IT RETURNS VALUE OF ''; EXPECTED VALUE OF CURRENT VALUE
 
-export default SearchBar = ({placeholder, value, type}) => {
+export default SearchBar = ({placeholder, value, type, navigation}) => {
   const [input, setInput] = useState({
     value: value,
     isError: false,
@@ -33,7 +33,12 @@ export default SearchBar = ({placeholder, value, type}) => {
           alignItems: 'center',
           marginVertical: width * 0.05,
         }}>
-        <IconFeather name="chevron-left" size={25} color="#222" />
+        <TouchableOpacity 
+          activeOpacity={1}
+          onPress={() => navigation.goBack()}
+        >
+          <IconFeather name="chevron-left" size={25} color="#222" />
+        </TouchableOpacity>
         <View style={styles.formContainer(input.isError)}>
           <TextInput
             placeholder={placeholder}
