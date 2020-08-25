@@ -1,12 +1,17 @@
 import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {IconSplash} from '../../assets/icon';
+import {connect} from 'react-redux';
 
-const Splash = ({navigation}) => {
+const Splash = ({navigation, auth}) => {
   useEffect(() => {
     setTimeout(() => {
+      if (auth.data.token) {
+        return navigation.replace('MainApp');
+      }
       navigation.replace('Signup');
     }, 3000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <View style={styles.page}>
@@ -16,7 +21,10 @@ const Splash = ({navigation}) => {
   );
 };
 
-export default Splash;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps)(Splash);
 
 const styles = StyleSheet.create({
   page: {

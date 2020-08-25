@@ -12,7 +12,9 @@ const CardHome = (props) => {
         return (
           <CardHomeItem
             key={product.id}
-            onPress={() => alert(`${product.id}`)}
+            onPress={() =>
+              props.navigation.navigate('ProductCard', {id: product.id})
+            }
             source={product.image}
           />
         );

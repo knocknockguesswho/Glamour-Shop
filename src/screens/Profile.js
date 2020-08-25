@@ -7,12 +7,9 @@ import {Button} from '../components/atoms';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import ImagePicker from 'react-native-image-picker';
 import {connect} from 'react-redux';
+import {Logout} from '../redux/actions/auth';
 
 const Profile = (props) => {
-  const handleSearchButton = () => {
-    console.log('Searching');
-  };
-  console.log(props);
 
   const [profile, setProfile] = useState({
     avatar: props.auth.data.image,
@@ -36,6 +33,15 @@ const Profile = (props) => {
       description: 'Notifications, Password',
       submit: () => props.navigation.push('MyProfileSettings'),
     },
+    {
+      title: 'Logout',
+      description: 'Sign Out',
+      submit: async () => {
+        const {dispatch} = props;
+        await dispatch(Logout());
+        props.navigation.replace('Login');
+      },
+    },
   ]);
 
   const handleImage = () => {
@@ -54,9 +60,9 @@ const Profile = (props) => {
       <HeaderBackButton
         rightComponent={true}
         rightCompName="search"
+        rightCompOnPress={() => props.navigation.push('Search')}
         leftComp={false}
         backgroundColor="#F9F9F9"
-        search={handleSearchButton}
       />
       <View style={{paddingLeft: width * 0.04}}>
         <Text style={styles.profileTitle}>My Profile</Text>

@@ -20,6 +20,7 @@ import Verification from './Verification';
 import VerificationChangePassword from './VerificationChangePassword';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
+import Payment from './Payment';
 
 export {
   AddShippingAddress,
@@ -44,4 +45,5 @@ export {
   VerificationChangePassword,
   ForgotPassword,
   ResetPassword,
+  Payment,
 };

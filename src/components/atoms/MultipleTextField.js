@@ -56,7 +56,7 @@ export default MultipleTextField = ({submit, formgroup}) =>{
                   onBlur={(value)=>setInput({...input, isTyping: false, value: value, doneSubmitting: true})} 
                   style={styles.formBar(input.isError, index, formgroup)} onSubmitEditing={handleSubmitEditing}
                   onChangeText={(value)=>setInput(value)} 
-                  textContentType={data.type} 
+                  // textContentType={data.type} 
                   secureTextEntry={data.secure}
                   keyboardType={data.keyType}
                 />
