@@ -65,21 +65,35 @@ class AddShippingAddress extends Component {
   handleBackButton = () => {
     this.props.navigation.goBack();
   };
+  
+  getData = (key, val) => {
+    this.setState((prevState) => ({
+      formGroup: prevState.formGroup.map((form) =>
+        form.placeholder === key
+          ? Object.assign(form, {...form, value: val})
+          : form,
+      ),
+    }));
+  };
 
-  handleSaveAddressButton = () => {
+  handleSaveAddressButton = async () => {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
     const data = {
       name: formGroup[0].value,
       address: formGroup[1].value,
+      city: formGroup[2].value,
+      state: formGroup[3].value,
+      zipCode: formGroup[4].value,
+      country: formGroup[5].value
     };
-
-    console.log(data);
+    //DISPATCH//////////////
+    /*
+    await ... 
+    */
+    ////////////////////////
   };
 
-  getData = (param, param2) => {
-    console.log(param, param2);
-  };
 
   render() {
     return (
