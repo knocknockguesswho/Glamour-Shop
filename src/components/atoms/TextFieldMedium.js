@@ -74,7 +74,7 @@ const TextFieldMedium = ({
             onFocus={() => setInput({...input, isTyping: true})}
             onBlur={() => handleBlur()}
             onChangeText={(val) => handleSubmitEditing(val)}
-            textContentType={type}
+            // textContentType={type}
             secureTextEntry={secure}
             style={styles.formBar(input.isError)}
           />

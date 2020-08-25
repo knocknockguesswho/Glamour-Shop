@@ -1,52 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 
-import {
-  AddressCard
-} from '../atoms';
+import {AddressCard} from '../atoms';
 
-export default AddressList = ({title, addresses, submit}) =>{
-
-  return(
+const AddressList = ({title, address, count, submit}) => {
+  return (
     <>
       <View style={styles.mainContainer}>
-        <View style={{alignSelf:'center'}}>
+        <View style={{alignSelf: 'center'}}>
           <Text style={styles.formTitle}>{title}</Text>
-          {addresses.map((data, index)=>{
-            return(
-              <AddressCard
-                key={index}
-                name={data.name}
-                address={data.address}
-                submit={submit}
-              />
-            )
-          })}
+          {address !== null &&
+            address.map((data, index) => {
+              return (
+                <AddressCard
+                  key={index}
+                  name={data.name}
+                  address={data.address}
+                  submit={submit}
+                />
+              );
+            })}
+
+          {address === null && (
+            <Text style={styles.address_empty}>Address is empty</Text>
+          )}
         </View>
       </View>
     </>
-  )
-}
+  );
+};
 
 const {height, width} = Dimensions.get('screen');
 const styles = StyleSheet.create({
-  mainContainer:{
-    width: width
+  mainContainer: {
+    width: width,
   },
-  formTitle:{
-    width: width*.9,
+  formTitle: {
+    width: width * 0.9,
     fontWeight: 'bold',
     fontSize: 15,
     color: 'black',
-    marginTop: width*.03,
-    marginBottom: width*.03,
-    alignSelf: 'center'
-  }
-})
+    marginTop: width * 0.03,
+    marginBottom: width * 0.03,
+    alignSelf: 'center',
+  },
+  address_empty: {
+    color: 'red',
+    textAlign: 'center',
+  },
+});
+
+export default AddressList;

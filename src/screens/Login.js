@@ -56,8 +56,6 @@ export class Login extends Component {
       password: formGroup[1].value,
     };
 
-    console.log(data);
-
     await dispatch(LoginProcess(data))
       .then((res) => {
         Alert.alert('Login Success');
