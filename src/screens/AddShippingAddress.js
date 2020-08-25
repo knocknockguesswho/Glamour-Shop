@@ -58,10 +58,6 @@ class AddShippingAddress extends Component {
     };
   }
 
-  handleSignup = () => {
-    console.log('Thanks for register');
-  };
-
   handleBackButton = () => {
     this.props.navigation.goBack();
   };
@@ -75,7 +71,7 @@ class AddShippingAddress extends Component {
       ),
     }));
   };
-
+  
   handleSaveAddressButton = async () => {
     const {dispatch, navigation} = this.props;
     const {formGroup} = this.state;
@@ -93,8 +89,8 @@ class AddShippingAddress extends Component {
     */
     ////////////////////////
   };
-
-
+  
+  
   render() {
     return (
       <View style={styles.mainContainer}>
@@ -113,7 +109,7 @@ class AddShippingAddress extends Component {
                 type={form.type}
                 secure={form.secure}
                 withArrow={form.withArrow}
-                submit={() => this.getData(form.placeholder, form.value)}
+                submit={this.getData}
               />
             );
           })}
