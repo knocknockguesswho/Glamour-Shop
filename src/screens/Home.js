@@ -6,6 +6,7 @@ import {
   Text,
   View,
   ScrollView,
+  Dimensions
 } from 'react-native';
 import {CoverHome} from '../../assets/images';
 import {Label} from '../components/atoms';
@@ -62,9 +63,11 @@ const Home = (props) => {
   );
 };
 
+const {width, height} = Dimensions.get('window')
+
 const styles = StyleSheet.create({
   page: {flex: 1, backgroundColor: 'white'},
-  background: {width: 400, height: 450},
+  background: {width: width, height: 450},
   title: {
     fontSize: 48,
     fontWeight: 'bold',
