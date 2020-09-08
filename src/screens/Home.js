@@ -33,7 +33,7 @@ const Home = (props) => {
         if (error.response.status === 401) {
           return props.navigation.replace('Login');
         }
-      });
+    });
   };
 
   useEffect(() => {

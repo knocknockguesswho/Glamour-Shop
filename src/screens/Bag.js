@@ -52,19 +52,39 @@ export class Bag extends Component {
 
   handleMinus = (id) => {
     let bags = [...this.state.bags];
-    const price = bags[id].total;
-    bags[id].qty = bags[id].qty - 1;
-    bags[id].price = price * bags[id].qty;
-    this.setState({bags: bags});
+    let bag_total = bags[id].total;
+    const price = bags[id].price
+    if(bags[id].qty>1){
+      bag_total-=price;
+      bags[id].qty-=1;
+      this.setState({
+        bags: bags,
+        total: this.state.total - price
+      })
+    }
   };
 
   handlePlus = (id) => {
     let bags = [...this.state.bags];
-    const price = bags[id].total;
-    bags[id].qty = bags[id].qty + 1;
-    bags[id].price = price * bags[id].qty;
-    this.setState({bags: bags});
+    let bag_total = bags[id].total;
+    const price = bags[id].price
+    if(bags[id].qty<bags[id].stock){
+      bag_total+=price;
+      bags[id].qty+=1;
+      this.setState({
+        bags: bags,
+        total: this.state.total + price
+      })
+    }
   };
+
+  componentDidMount(){
+    let total = 0;
+    for(let i = 0; i < this.state.bags.length; i++){
+      total += this.state.bags[i].total
+    }
+    this.setState({total: total})
+  }
 
   render() {
     return (
@@ -80,7 +100,6 @@ export class Bag extends Component {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.bagList}>
             {this.state.bags.map((bag, index) => {
-              this.state.total = this.state.total += bag.total;
               return (
                 <CartBagList
                   key={index}
@@ -90,9 +109,9 @@ export class Bag extends Component {
                   size={bag.size}
                   qty={bag.qty}
                   price={bag.price}
-                  minus={bag.qty > 1 ? () => this.handleMinus(index) : null}
+                  minus={()=>this.handleMinus(index)}
                   plus={
-                    bag.qty < bag.stock ? () => this.handlePlus(index) : null
+                   ()=>this.handlePlus(index)
                   }
                 />
               );
